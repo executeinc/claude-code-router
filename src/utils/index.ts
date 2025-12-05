@@ -7,6 +7,7 @@ import {
   DEFAULT_CONFIG,
   HOME_DIR,
   PLUGINS_DIR,
+  getConfigFilePath,
 } from "../constants";
 import { cleanupLogFiles } from "./logCleanup";
 
@@ -67,15 +68,21 @@ const confirm = async (query: string): Promise<boolean> => {
 };
 
 export const readConfigFile = async () => {
+  const configPath = getConfigFilePath();
+  const isLocalConfig = configPath !== CONFIG_FILE;
+
   try {
-    const config = await fs.readFile(CONFIG_FILE, "utf-8");
+    const config = await fs.readFile(configPath, "utf-8");
+    if (isLocalConfig) {
+      console.log(`Loaded local config from: ${configPath}`);
+    }
     try {
       // Try to parse with JSON5 first (which also supports standard JSON)
       const parsedConfig = JSON5.parse(config);
       // Interpolate environment variables in the parsed config
       return interpolateEnvVars(parsedConfig);
     } catch (parseError) {
-      console.error(`Failed to parse config file at ${CONFIG_FILE}`);
+      console.error(`Failed to parse config file at ${configPath}`);
       console.error("Error details:", (parseError as Error).message);
       console.error("Please check your config file syntax.");
       process.exit(1);

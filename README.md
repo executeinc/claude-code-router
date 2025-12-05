@@ -45,7 +45,26 @@ npm install -g @musistudio/claude-code-router
 
 ### 2. Configuration
 
-Create and configure your `~/.claude-code-router/config.json` file. For more details, you can refer to `config.example.json`.
+Create and configure your config file. The router supports two config locations:
+
+#### Global Config (Default)
+```
+~/.claude-code-router/config.json
+```
+
+#### Local Project Config (New)
+```
+<project-directory>/.claude-code-router/config.json
+```
+
+**How it works:** When you run `ccr` commands, the router first checks for a local `.claude-code-router/config.json` in your current working directory. If found, it uses that config. Otherwise, it falls back to the global config.
+
+This allows you to:
+- Use different LLM providers per project
+- Run regular `claude` for Anthropic cloud alongside `ccr code` for local/custom providers
+- Keep project-specific routing configurations in version control
+
+For more details, you can refer to `config.example.json`.
 
 The `config.json` file has several key sections:
 
@@ -216,6 +235,67 @@ ccr code
 > ```shell
 > ccr restart
 > ```
+
+#### How it Works with Claude Max Subscriptions
+
+If you have a Claude Max subscription, Claude Code normally uses OAuth authentication which bypasses API key routing. The `ccr code` command automatically handles this by:
+
+1. **Forcing API key mode**: Sets `primaryProvider: "api-key"` in Claude Code settings to bypass Claude Max OAuth
+2. **Overriding environment variables**: Sets `ANTHROPIC_BASE_URL` to point to the local router and `ANTHROPIC_API_KEY` to a placeholder value
+3. **Routing requests**: All requests go through the router at `http://127.0.0.1:3456` which forwards them to your configured providers
+
+This allows you to:
+- Use `claude` command normally for Anthropic cloud (with your Claude Max subscription)
+- Use `ccr code` to route to local models (vLLM, Ollama) or alternative providers
+
+**Example: Routing to a local vLLM server**
+
+```json
+{
+  "PORT": 3456,
+  "Providers": [
+    {
+      "name": "local-vllm",
+      "api_base_url": "http://localhost:8000/v1/chat/completions",
+      "api_key": "not-needed",
+      "models": ["Qwen/Qwen3-Coder-30B-A3B-Instruct"]
+    }
+  ],
+  "Router": {
+    "default": "local-vllm,Qwen/Qwen3-Coder-30B-A3B-Instruct"
+  }
+}
+```
+
+> **Note**: The model will identify itself based on Claude Code's system prompt (e.g., "I'm Claude Opus 4.5"), but the actual inference runs on your configured model. You can verify routing by checking the router logs in `~/.claude-code-router/logs/`.
+
+#### MCP Server Support
+
+The `ccr code` command automatically detects and loads your MCP (Model Context Protocol) server configuration. MCP servers provide additional tools and capabilities to Claude Code.
+
+**Default MCP config locations by platform:**
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+If your MCP config is in a different location, you can specify it in your router config:
+
+```json
+{
+  "MCP_CONFIG_PATH": "/path/to/your/claude_desktop_config.json"
+}
+```
+
+When running `ccr code`, you'll see the MCP config path in the startup output:
+```
+🔧 Router config:
+   ANTHROPIC_BASE_URL: http://127.0.0.1:3456
+   ANTHROPIC_API_KEY: test...
+   primaryProvider: api-key
+   MCP config: C:\Users\you\AppData\Roaming\Claude\claude_desktop_config.json
+```
+
+You can verify MCP servers are loaded by running `/mcp` inside Claude Code.
 
 ### 4. UI Mode
 

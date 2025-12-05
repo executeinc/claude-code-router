@@ -1,8 +1,22 @@
 import path from "node:path";
 import os from "node:os";
+import { existsSync } from "node:fs";
 
 export const HOME_DIR = path.join(os.homedir(), ".claude-code-router");
 
+// Local project config directory name
+export const LOCAL_CONFIG_DIR = ".claude-code-router";
+
+// Get config file path - checks local first, then global
+export const getConfigFilePath = (): string => {
+  const localConfigPath = path.join(process.cwd(), LOCAL_CONFIG_DIR, "config.json");
+  if (existsSync(localConfigPath)) {
+    return localConfigPath;
+  }
+  return path.join(HOME_DIR, "config.json");
+};
+
+// Default global config file (for backwards compatibility)
 export const CONFIG_FILE = path.join(HOME_DIR, "config.json");
 
 export const PLUGINS_DIR = path.join(HOME_DIR, "plugins");

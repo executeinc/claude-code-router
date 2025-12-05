@@ -1,21 +1,23 @@
 import { spawn, type StdioOptions } from "child_process";
+import { existsSync } from "fs";
+import path from "path";
+import os from "os";
 import { readConfigFile } from ".";
 import { closeService } from "./close";
 import {
   decrementReferenceCount,
   incrementReferenceCount,
 } from "./processCheck";
-import { quote } from 'shell-quote';
-import minimist from "minimist";
 import { createEnvVariables } from "./createEnvVariables";
-
 
 export async function executeCodeCommand(args: string[] = []) {
   // Set environment variables using shared function
   const config = await readConfigFile();
   const env = await createEnvVariables();
-  const settingsFlag = {
-    env
+  const settingsFlag: any = {
+    env,
+    // Force API key mode instead of Claude Max subscription auth
+    primaryProvider: "api-key"
   };
   if (config?.StatusLine?.enabled) {
     settingsFlag.statusLine = {
@@ -24,7 +26,6 @@ export async function executeCodeCommand(args: string[] = []) {
       padding: 0,
     }
   }
-  args.push('--settings', `${JSON.stringify(settingsFlag)}`);
 
   // Non-interactive mode for automation environments
   if (config.NON_INTERACTIVE_MODE) {
@@ -39,36 +40,67 @@ export async function executeCodeCommand(args: string[] = []) {
     env.ANTHROPIC_SMALL_FAST_MODEL = config.ANTHROPIC_SMALL_FAST_MODEL;
   }
 
+  // Detect MCP config file path
+  let mcpConfigPath: string | null = null;
+  if (config?.MCP_CONFIG_PATH && existsSync(config.MCP_CONFIG_PATH)) {
+    mcpConfigPath = config.MCP_CONFIG_PATH;
+  } else {
+    // Default MCP config locations by platform
+    const platform = process.platform;
+    let defaultPath: string;
+    if (platform === 'win32') {
+      defaultPath = path.join(process.env.APPDATA || path.join(os.homedir(), 'AppData', 'Roaming'), 'Claude', 'claude_desktop_config.json');
+    } else if (platform === 'darwin') {
+      defaultPath = path.join(os.homedir(), 'Library', 'Application Support', 'Claude', 'claude_desktop_config.json');
+    } else {
+      defaultPath = path.join(process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config'), 'Claude', 'claude_desktop_config.json');
+    }
+    if (existsSync(defaultPath)) {
+      mcpConfigPath = defaultPath;
+    }
+  }
+
   // Increment reference count when command starts
   incrementReferenceCount();
 
   // Execute claude command
   const claudePath = config?.CLAUDE_PATH || process.env.CLAUDE_PATH || "claude";
 
-  const joinedArgs = args.length > 0 ? quote(args) : "";
-
   const stdioConfig: StdioOptions = config.NON_INTERACTIVE_MODE
     ? ["pipe", "inherit", "inherit"] // Pipe stdin for non-interactive
     : "inherit"; // Default inherited behavior
 
-  const argsObj = minimist(args)
-  const argsArr = []
-  for (const [argsObjKey, argsObjValue] of Object.entries(argsObj)) {
-    if (argsObjKey !== '_' && argsObj[argsObjKey]) {
-      const prefix = argsObjKey.length === 1 ? '-' : '--';
-      // For boolean flags, don't append the value
-      if (argsObjValue === true) {
-        argsArr.push(`${prefix}${argsObjKey}`);
-      } else {
-        argsArr.push(`${prefix}${argsObjKey} ${JSON.stringify(argsObjValue)}`);
-      }
-    }
+  // Build args array directly - avoid minimist which corrupts JSON
+  // Escape JSON for Windows shell - use double quotes and escape internal quotes
+  const settingsJson = JSON.stringify(settingsFlag);
+  const isWindows = process.platform === 'win32';
+  const escapedSettings = isWindows
+    ? `"${settingsJson.replace(/"/g, '\\"')}"`
+    : `'${settingsJson}'`;
+  const finalArgs = [...args, '--settings', escapedSettings];
+
+  // Add MCP config if found
+  if (mcpConfigPath) {
+    finalArgs.push('--mcp-config', mcpConfigPath);
   }
+
+  // Merge env vars - our overrides take precedence over process.env
+  const mergedEnv = { ...process.env, ...env };
+
+  // Debug: show key config being passed to Claude
+  console.log("🔧 Router config:");
+  console.log(`   ANTHROPIC_BASE_URL: ${mergedEnv.ANTHROPIC_BASE_URL}`);
+  console.log(`   ANTHROPIC_API_KEY: ${mergedEnv.ANTHROPIC_API_KEY ? mergedEnv.ANTHROPIC_API_KEY.substring(0, 20) + '...' : 'not set'}`);
+  console.log(`   primaryProvider: api-key`);
+  if (mcpConfigPath) {
+    console.log(`   MCP config: ${mcpConfigPath}`);
+  }
+
   const claudeProcess = spawn(
     claudePath,
-    argsArr,
+    finalArgs,
     {
-      env: process.env,
+      env: mergedEnv,
       stdio: stdioConfig,
       shell: true,
     }

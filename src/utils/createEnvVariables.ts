@@ -10,8 +10,8 @@ export const createEnvVariables = async () => {
   const apiKey = config.APIKEY || "test";
 
   return {
-    ANTHROPIC_AUTH_TOKEN: apiKey,
-    ANTHROPIC_API_KEY: "",
+    // Override API key to force Claude to use BASE_URL instead of Anthropic direct
+    ANTHROPIC_API_KEY: apiKey,
     ANTHROPIC_BASE_URL: `http://127.0.0.1:${port}`,
     NO_PROXY: "127.0.0.1",
     DISABLE_TELEMETRY: "true",

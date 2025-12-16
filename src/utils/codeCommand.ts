@@ -10,10 +10,56 @@ import {
 } from "./processCheck";
 import { createEnvVariables } from "./createEnvVariables";
 
-export async function executeCodeCommand(args: string[] = []) {
+export async function executeCodeCommand(args: string[] = [], providerOverride?: string, noStripSystem?: boolean) {
   // Set environment variables using shared function
   const config = await readConfigFile();
+
+  // Handle provider override
+  if (providerOverride) {
+    const provider = config.Providers?.find((p: any) => p.name === providerOverride);
+    if (!provider) {
+      console.error(`Error: Provider '${providerOverride}' not found in config.`);
+      console.log("\nAvailable providers:");
+      config.Providers?.forEach((p: any) => console.log(`  - ${p.name}`));
+      process.exit(1);
+    }
+    const model = provider.models?.[0];
+    if (!model) {
+      console.error(`Error: Provider '${providerOverride}' has no models configured.`);
+      process.exit(1);
+    }
+    // Write override to temp file for router to read
+    const overrideFile = path.join(os.homedir(), ".claude-code-router", ".model-override.json");
+    const overrideData = {
+      provider: providerOverride,
+      model: model,
+      timestamp: Date.now()
+    };
+    try {
+      await require("fs/promises").writeFile(overrideFile, JSON.stringify(overrideData));
+      console.log(`🎯 Using provider: ${providerOverride} (${model})`);
+    } catch (err) {
+      console.error(`Warning: Could not write override file: ${err}`);
+    }
+  }
+
   const env = await createEnvVariables();
+
+  // Write no-strip-system flag to file for router to read
+  if (noStripSystem) {
+    const flagFile = path.join(os.homedir(), ".claude-code-router", ".no-strip-system.json");
+    const flagData = {
+      enabled: true,
+      timestamp: Date.now()
+    };
+    try {
+      await require("fs/promises").writeFile(flagFile, JSON.stringify(flagData));
+      console.log(`🔓 System context stripping disabled for this session`);
+    } catch (err) {
+      console.error(`Warning: Could not write no-strip-system flag: ${err}`);
+    }
+  }
+
   const settingsFlag: any = {
     env,
     // Force API key mode instead of Claude Max subscription auth
@@ -120,7 +166,25 @@ export async function executeCodeCommand(args: string[] = []) {
     process.exit(1);
   });
 
-  claudeProcess.on("close", (code) => {
+  claudeProcess.on("close", async (code) => {
+    // Clean up override file if it exists
+    if (providerOverride) {
+      const overrideFile = path.join(os.homedir(), ".claude-code-router", ".model-override.json");
+      try {
+        await require("fs/promises").unlink(overrideFile);
+      } catch (err) {
+        // Ignore cleanup errors
+      }
+    }
+    // Clean up no-strip-system flag if it exists
+    if (noStripSystem) {
+      const flagFile = path.join(os.homedir(), ".claude-code-router", ".no-strip-system.json");
+      try {
+        await require("fs/promises").unlink(flagFile);
+      } catch (err) {
+        // Ignore cleanup errors
+      }
+    }
     decrementReferenceCount();
     closeService();
     process.exit(code || 0);

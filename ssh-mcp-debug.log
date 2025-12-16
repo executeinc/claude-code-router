@@ -1,0 +1,5336 @@
+[2025-12-05T15:45:42.334Z] [INFO] ============================================================
+[2025-12-05T15:45:42.335Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-05T15:45:42.335Z] [INFO] Timestamp: 2025-12-05T15:45:42.335Z
+[2025-12-05T15:45:42.335Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-05T15:45:42.336Z] [INFO] Arguments: []
+[2025-12-05T15:45:42.336Z] [INFO] Process ID: 31160
+[2025-12-05T15:45:42.336Z] [INFO] Node Version: v22.19.0
+[2025-12-05T15:45:42.336Z] [INFO] ============================================================
+[2025-12-05T15:45:42.336Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-05T15:45:42.336Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-05T15:45:42.347Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-05T15:45:42.348Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-05T15:45:42.348Z] [DEBUG] Machines file exists: true
+[2025-12-05T15:45:42.348Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-05T15:45:42.348Z] [DEBUG] Parsed 7 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-05T15:45:42.348Z] [INFO] Loaded 7 machine(s) from machines.json
+[2025-12-05T15:45:42.348Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-05T15:45:42.349Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-05T15:45:42.349Z] [INFO] Configured 7 SSH server(s):
+[2025-12-05T15:45:42.349Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-05T15:45:42.349Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-05T15:45:42.349Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-05T15:45:42.349Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-05T15:45:42.350Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-05T15:45:42.350Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-05T15:45:42.350Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-05T15:45:42.350Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-05T15:45:42.350Z] [INFO] Registering MCP tools...
+[2025-12-05T15:45:42.350Z] [INFO] Registering execute-command tool...
+[2025-12-05T15:45:42.351Z] [INFO] execute-command tool registered successfully
+[2025-12-05T15:45:42.351Z] [INFO] Tools registered successfully
+[2025-12-05T15:45:42.351Z] [INFO] Starting MCP transport...
+[2025-12-05T15:45:42.351Z] [INFO] SSH MCP Server is ready and running
+[2025-12-05T16:51:08.046Z] [INFO] ============================================================
+[2025-12-05T16:51:08.047Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-05T16:51:08.047Z] [INFO] Timestamp: 2025-12-05T16:51:08.047Z
+[2025-12-05T16:51:08.047Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-05T16:51:08.047Z] [INFO] Arguments: []
+[2025-12-05T16:51:08.048Z] [INFO] Process ID: 29892
+[2025-12-05T16:51:08.048Z] [INFO] Node Version: v22.19.0
+[2025-12-05T16:51:08.048Z] [INFO] ============================================================
+[2025-12-05T16:51:08.048Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-05T16:51:08.048Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-05T16:51:08.049Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-05T16:51:08.049Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-05T16:51:08.049Z] [DEBUG] Machines file exists: true
+[2025-12-05T16:51:08.049Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-05T16:51:08.049Z] [DEBUG] Parsed 7 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-05T16:51:08.050Z] [INFO] Loaded 7 machine(s) from machines.json
+[2025-12-05T16:51:08.050Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-05T16:51:08.050Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-05T16:51:08.051Z] [INFO] Configured 7 SSH server(s):
+[2025-12-05T16:51:08.051Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-05T16:51:08.051Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-05T16:51:08.051Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-05T16:51:08.052Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-05T16:51:08.052Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-05T16:51:08.052Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-05T16:51:08.052Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-05T16:51:08.052Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-05T16:51:08.052Z] [INFO] Registering MCP tools...
+[2025-12-05T16:51:08.052Z] [INFO] Registering execute-command tool...
+[2025-12-05T16:51:08.053Z] [INFO] execute-command tool registered successfully
+[2025-12-05T16:51:08.053Z] [INFO] Tools registered successfully
+[2025-12-05T16:51:08.053Z] [INFO] Starting MCP transport...
+[2025-12-05T16:51:08.054Z] [INFO] SSH MCP Server is ready and running
+[2025-12-05T19:14:53.877Z] [INFO] ============================================================
+[2025-12-05T19:14:53.878Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-05T19:14:53.879Z] [INFO] Timestamp: 2025-12-05T19:14:53.879Z
+[2025-12-05T19:14:53.879Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-05T19:14:53.879Z] [INFO] Arguments: []
+[2025-12-05T19:14:53.879Z] [INFO] Process ID: 5340
+[2025-12-05T19:14:53.879Z] [INFO] Node Version: v22.19.0
+[2025-12-05T19:14:53.879Z] [INFO] ============================================================
+[2025-12-05T19:14:53.879Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-05T19:14:53.880Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-05T19:14:53.880Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-05T19:14:53.880Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-05T19:14:53.881Z] [DEBUG] Machines file exists: true
+[2025-12-05T19:14:53.881Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-05T19:14:53.881Z] [DEBUG] Parsed 7 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-05T19:14:53.881Z] [INFO] Loaded 7 machine(s) from machines.json
+[2025-12-05T19:14:53.881Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-05T19:14:53.881Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-05T19:14:53.882Z] [INFO] Configured 7 SSH server(s):
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-05T19:14:53.882Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-05T19:14:53.883Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-05T19:14:53.883Z] [INFO] Registering MCP tools...
+[2025-12-05T19:14:53.883Z] [INFO] Registering execute-command tool...
+[2025-12-05T19:14:53.883Z] [INFO] execute-command tool registered successfully
+[2025-12-05T19:14:53.884Z] [INFO] Tools registered successfully
+[2025-12-05T19:14:53.884Z] [INFO] Starting MCP transport...
+[2025-12-05T19:14:53.884Z] [INFO] SSH MCP Server is ready and running
+[2025-12-05T19:16:15.289Z] [INFO] Attempting to connect to [zurgc2.executeinc.com] at zurgc2.executeinc.com:88
+[2025-12-05T19:16:15.289Z] [DEBUG] Keep-alive enabled for [zurgc2.executeinc.com]: interval=60000ms, max_count=3
+[2025-12-05T19:16:15.289Z] [DEBUG] Reading private key for [zurgc2.executeinc.com] from: c:\Users\execu\.ssh\zurgc2.executeinc.com.ksully.rsa
+[2025-12-05T19:16:15.290Z] [INFO] Using SSH private key authentication for [zurgc2.executeinc.com] from c:\Users\execu\.ssh\zurgc2.executeinc.com.ksully.rsa
+[2025-12-05T19:16:15.290Z] [DEBUG] Initiating SSH connection to [zurgc2.executeinc.com] with config: {
+  "host": "zurgc2.executeinc.com",
+  "port": 88,
+  "username": "ksully",
+  "authMethod": "privateKey",
+  "readyTimeout": 30000,
+  "keepaliveInterval": 60000,
+  "keepaliveCountMax": 3
+}
+[2025-12-05T19:16:15.386Z] [INFO] Successfully connected to SSH server [zurgc2.executeinc.com] zurgc2.executeinc.com:88
+[2025-12-05T19:49:53.936Z] [INFO] Closing idle SSH connection [zurgc2.executeinc.com] (idle for 2019s)
+[2025-12-05T19:49:53.937Z] [INFO] Closed 1 idle SSH connection(s)
+[2025-12-05T19:49:53.946Z] [INFO] SSH connection [zurgc2.executeinc.com] closed
+[2025-12-09T17:56:00.263Z] [INFO] ============================================================
+[2025-12-09T17:56:00.264Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T17:56:00.264Z] [INFO] Timestamp: 2025-12-09T17:56:00.264Z
+[2025-12-09T17:56:00.265Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T17:56:00.265Z] [INFO] Arguments: []
+[2025-12-09T17:56:00.265Z] [INFO] Process ID: 37056
+[2025-12-09T17:56:00.265Z] [INFO] Node Version: v22.19.0
+[2025-12-09T17:56:00.265Z] [INFO] ============================================================
+[2025-12-09T17:56:00.265Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T17:56:00.266Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T17:56:00.266Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T17:56:00.267Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T17:56:00.267Z] [DEBUG] Machines file exists: true
+[2025-12-09T17:56:00.267Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T17:56:00.267Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T17:56:00.268Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T17:56:00.268Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T17:56:00.268Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T17:56:00.269Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T17:56:00.269Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T17:56:00.269Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T17:56:00.269Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T17:56:00.269Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T17:56:00.270Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T17:56:00.270Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T17:56:00.270Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T17:56:00.270Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T17:56:00.270Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T17:56:00.270Z] [INFO] Registering MCP tools...
+[2025-12-09T17:56:00.271Z] [INFO] Registering execute-command tool...
+[2025-12-09T17:56:00.271Z] [INFO] execute-command tool registered successfully
+[2025-12-09T17:56:00.271Z] [INFO] Tools registered successfully
+[2025-12-09T17:56:00.272Z] [INFO] Starting MCP transport...
+[2025-12-09T17:56:00.272Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T20:17:08.380Z] [INFO] ============================================================
+[2025-12-09T20:17:08.381Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T20:17:08.382Z] [INFO] Timestamp: 2025-12-09T20:17:08.382Z
+[2025-12-09T20:17:08.382Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T20:17:08.382Z] [INFO] Arguments: []
+[2025-12-09T20:17:08.382Z] [INFO] Process ID: 21548
+[2025-12-09T20:17:08.382Z] [INFO] Node Version: v22.19.0
+[2025-12-09T20:17:08.383Z] [INFO] ============================================================
+[2025-12-09T20:17:08.383Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T20:17:08.383Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T20:17:08.384Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T20:17:08.384Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T20:17:08.384Z] [DEBUG] Machines file exists: true
+[2025-12-09T20:17:08.384Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:17:08.384Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:17:08.385Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T20:17:08.385Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T20:17:08.385Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T20:17:08.385Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T20:17:08.386Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T20:17:08.387Z] [INFO] Registering MCP tools...
+[2025-12-09T20:17:08.387Z] [INFO] Registering execute-command tool...
+[2025-12-09T20:17:08.387Z] [INFO] execute-command tool registered successfully
+[2025-12-09T20:17:08.388Z] [INFO] Tools registered successfully
+[2025-12-09T20:17:08.388Z] [INFO] Starting MCP transport...
+[2025-12-09T20:17:08.388Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T20:18:37.817Z] [INFO] ============================================================
+[2025-12-09T20:18:37.818Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T20:18:37.818Z] [INFO] Timestamp: 2025-12-09T20:18:37.818Z
+[2025-12-09T20:18:37.818Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T20:18:37.819Z] [INFO] Arguments: []
+[2025-12-09T20:18:37.819Z] [INFO] Process ID: 12376
+[2025-12-09T20:18:37.819Z] [INFO] Node Version: v22.19.0
+[2025-12-09T20:18:37.819Z] [INFO] ============================================================
+[2025-12-09T20:18:37.819Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T20:18:37.819Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T20:18:37.820Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T20:18:37.820Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T20:18:37.820Z] [DEBUG] Machines file exists: true
+[2025-12-09T20:18:37.821Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:18:37.821Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:18:37.821Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T20:18:37.821Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T20:18:37.821Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T20:18:37.822Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T20:18:37.822Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T20:18:37.822Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T20:18:37.823Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T20:18:37.823Z] [INFO] Registering MCP tools...
+[2025-12-09T20:18:37.823Z] [INFO] Registering execute-command tool...
+[2025-12-09T20:18:37.823Z] [INFO] execute-command tool registered successfully
+[2025-12-09T20:18:37.824Z] [INFO] Tools registered successfully
+[2025-12-09T20:18:37.824Z] [INFO] Starting MCP transport...
+[2025-12-09T20:18:37.824Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T20:30:33.049Z] [INFO] ============================================================
+[2025-12-09T20:30:33.050Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T20:30:33.051Z] [INFO] Timestamp: 2025-12-09T20:30:33.051Z
+[2025-12-09T20:30:33.051Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T20:30:33.051Z] [INFO] Arguments: []
+[2025-12-09T20:30:33.051Z] [INFO] Process ID: 34904
+[2025-12-09T20:30:33.051Z] [INFO] Node Version: v22.19.0
+[2025-12-09T20:30:33.051Z] [INFO] ============================================================
+[2025-12-09T20:30:33.051Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T20:30:33.052Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T20:30:33.052Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T20:30:33.052Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T20:30:33.053Z] [DEBUG] Machines file exists: true
+[2025-12-09T20:30:33.053Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:30:33.053Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:30:33.053Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T20:30:33.053Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T20:30:33.054Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T20:30:33.054Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T20:30:33.054Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T20:30:33.054Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T20:30:33.054Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T20:30:33.055Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T20:30:33.055Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T20:30:33.055Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T20:30:33.055Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T20:30:33.055Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T20:30:33.055Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T20:30:33.056Z] [INFO] Registering MCP tools...
+[2025-12-09T20:30:33.056Z] [INFO] Registering execute-command tool...
+[2025-12-09T20:30:33.056Z] [INFO] execute-command tool registered successfully
+[2025-12-09T20:30:33.057Z] [INFO] Tools registered successfully
+[2025-12-09T20:30:33.057Z] [INFO] Starting MCP transport...
+[2025-12-09T20:30:33.057Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T20:32:55.120Z] [INFO] ============================================================
+[2025-12-09T20:32:55.121Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T20:32:55.122Z] [INFO] Timestamp: 2025-12-09T20:32:55.122Z
+[2025-12-09T20:32:55.122Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T20:32:55.122Z] [INFO] Arguments: []
+[2025-12-09T20:32:55.122Z] [INFO] Process ID: 5024
+[2025-12-09T20:32:55.123Z] [INFO] Node Version: v22.19.0
+[2025-12-09T20:32:55.123Z] [INFO] ============================================================
+[2025-12-09T20:32:55.123Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T20:32:55.123Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T20:32:55.124Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T20:32:55.124Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T20:32:55.125Z] [DEBUG] Machines file exists: true
+[2025-12-09T20:32:55.125Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:32:55.125Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:32:55.125Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T20:32:55.125Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T20:32:55.126Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T20:32:55.126Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T20:32:55.126Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T20:32:55.126Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T20:32:55.126Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T20:32:55.126Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T20:32:55.126Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T20:32:55.127Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T20:32:55.127Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T20:32:55.127Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T20:32:55.127Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T20:32:55.127Z] [INFO] Registering MCP tools...
+[2025-12-09T20:32:55.127Z] [INFO] Registering execute-command tool...
+[2025-12-09T20:32:55.128Z] [INFO] execute-command tool registered successfully
+[2025-12-09T20:32:55.128Z] [INFO] Tools registered successfully
+[2025-12-09T20:32:55.128Z] [INFO] Starting MCP transport...
+[2025-12-09T20:32:55.129Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T20:49:45.486Z] [INFO] ============================================================
+[2025-12-09T20:49:45.487Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T20:49:45.487Z] [INFO] Timestamp: 2025-12-09T20:49:45.487Z
+[2025-12-09T20:49:45.487Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T20:49:45.487Z] [INFO] Arguments: []
+[2025-12-09T20:49:45.487Z] [INFO] Process ID: 35144
+[2025-12-09T20:49:45.488Z] [INFO] Node Version: v22.19.0
+[2025-12-09T20:49:45.488Z] [INFO] ============================================================
+[2025-12-09T20:49:45.488Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T20:49:45.488Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T20:49:45.489Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T20:49:45.489Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T20:49:45.489Z] [DEBUG] Machines file exists: true
+[2025-12-09T20:49:45.489Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:49:45.489Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:49:45.490Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T20:49:45.490Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T20:49:45.490Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T20:49:45.490Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T20:49:45.490Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T20:49:45.491Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T20:49:45.491Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T20:49:45.491Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T20:49:45.491Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T20:49:45.491Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T20:49:45.491Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T20:49:45.492Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T20:49:45.492Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T20:49:45.492Z] [INFO] Registering MCP tools...
+[2025-12-09T20:49:45.492Z] [INFO] Registering execute-command tool...
+[2025-12-09T20:49:45.493Z] [INFO] execute-command tool registered successfully
+[2025-12-09T20:49:45.493Z] [INFO] Tools registered successfully
+[2025-12-09T20:49:45.493Z] [INFO] Starting MCP transport...
+[2025-12-09T20:49:45.494Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T20:52:29.263Z] [INFO] ============================================================
+[2025-12-09T20:52:29.264Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T20:52:29.264Z] [INFO] Timestamp: 2025-12-09T20:52:29.264Z
+[2025-12-09T20:52:29.265Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T20:52:29.265Z] [INFO] Arguments: []
+[2025-12-09T20:52:29.265Z] [INFO] Process ID: 31388
+[2025-12-09T20:52:29.265Z] [INFO] Node Version: v22.19.0
+[2025-12-09T20:52:29.265Z] [INFO] ============================================================
+[2025-12-09T20:52:29.265Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T20:52:29.266Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T20:52:29.266Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T20:52:29.267Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T20:52:29.267Z] [DEBUG] Machines file exists: true
+[2025-12-09T20:52:29.267Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:52:29.267Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T20:52:29.268Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T20:52:29.268Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T20:52:29.268Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T20:52:29.268Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T20:52:29.269Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T20:52:29.269Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T20:52:29.269Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T20:52:29.269Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T20:52:29.269Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T20:52:29.269Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T20:52:29.269Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T20:52:29.270Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T20:52:29.270Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T20:52:29.270Z] [INFO] Registering MCP tools...
+[2025-12-09T20:52:29.271Z] [INFO] Registering execute-command tool...
+[2025-12-09T20:52:29.271Z] [INFO] execute-command tool registered successfully
+[2025-12-09T20:52:29.271Z] [INFO] Tools registered successfully
+[2025-12-09T20:52:29.272Z] [INFO] Starting MCP transport...
+[2025-12-09T20:52:29.272Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T21:02:52.153Z] [INFO] ============================================================
+[2025-12-09T21:02:52.154Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T21:02:52.155Z] [INFO] Timestamp: 2025-12-09T21:02:52.155Z
+[2025-12-09T21:02:52.155Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T21:02:52.155Z] [INFO] Arguments: []
+[2025-12-09T21:02:52.156Z] [INFO] Process ID: 3736
+[2025-12-09T21:02:52.156Z] [INFO] Node Version: v22.19.0
+[2025-12-09T21:02:52.156Z] [INFO] ============================================================
+[2025-12-09T21:02:52.156Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T21:02:52.156Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T21:02:52.157Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T21:02:52.157Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T21:02:52.158Z] [DEBUG] Machines file exists: true
+[2025-12-09T21:02:52.158Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:02:52.158Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:02:52.158Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T21:02:52.159Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T21:02:52.159Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T21:02:52.159Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T21:02:52.160Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T21:02:52.161Z] [INFO] Registering MCP tools...
+[2025-12-09T21:02:52.161Z] [INFO] Registering execute-command tool...
+[2025-12-09T21:02:52.161Z] [INFO] execute-command tool registered successfully
+[2025-12-09T21:02:52.162Z] [INFO] Tools registered successfully
+[2025-12-09T21:02:52.162Z] [INFO] Starting MCP transport...
+[2025-12-09T21:02:52.162Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T21:03:48.612Z] [INFO] ============================================================
+[2025-12-09T21:03:48.613Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T21:03:48.613Z] [INFO] Timestamp: 2025-12-09T21:03:48.613Z
+[2025-12-09T21:03:48.614Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T21:03:48.614Z] [INFO] Arguments: []
+[2025-12-09T21:03:48.614Z] [INFO] Process ID: 29556
+[2025-12-09T21:03:48.614Z] [INFO] Node Version: v22.19.0
+[2025-12-09T21:03:48.614Z] [INFO] ============================================================
+[2025-12-09T21:03:48.614Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T21:03:48.614Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T21:03:48.615Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T21:03:48.615Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T21:03:48.615Z] [DEBUG] Machines file exists: true
+[2025-12-09T21:03:48.615Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:03:48.616Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:03:48.616Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T21:03:48.616Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T21:03:48.616Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T21:03:48.617Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T21:03:48.617Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T21:03:48.617Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T21:03:48.617Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T21:03:48.617Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T21:03:48.617Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T21:03:48.617Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T21:03:48.617Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T21:03:48.618Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T21:03:48.618Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T21:03:48.618Z] [INFO] Registering MCP tools...
+[2025-12-09T21:03:48.618Z] [INFO] Registering execute-command tool...
+[2025-12-09T21:03:48.619Z] [INFO] execute-command tool registered successfully
+[2025-12-09T21:03:48.619Z] [INFO] Tools registered successfully
+[2025-12-09T21:03:48.619Z] [INFO] Starting MCP transport...
+[2025-12-09T21:03:48.620Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T21:03:55.907Z] [INFO] ============================================================
+[2025-12-09T21:03:55.909Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T21:03:55.909Z] [INFO] Timestamp: 2025-12-09T21:03:55.909Z
+[2025-12-09T21:03:55.909Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T21:03:55.909Z] [INFO] Arguments: []
+[2025-12-09T21:03:55.910Z] [INFO] Process ID: 35756
+[2025-12-09T21:03:55.910Z] [INFO] Node Version: v22.19.0
+[2025-12-09T21:03:55.910Z] [INFO] ============================================================
+[2025-12-09T21:03:55.910Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T21:03:55.910Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T21:03:55.911Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T21:03:55.911Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T21:03:55.911Z] [DEBUG] Machines file exists: true
+[2025-12-09T21:03:55.911Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:03:55.911Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:03:55.912Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T21:03:55.912Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T21:03:55.912Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T21:03:55.912Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T21:03:55.913Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T21:03:55.914Z] [INFO] Registering MCP tools...
+[2025-12-09T21:03:55.914Z] [INFO] Registering execute-command tool...
+[2025-12-09T21:03:55.914Z] [INFO] execute-command tool registered successfully
+[2025-12-09T21:03:55.915Z] [INFO] Tools registered successfully
+[2025-12-09T21:03:55.915Z] [INFO] Starting MCP transport...
+[2025-12-09T21:03:55.915Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T21:04:03.314Z] [INFO] ============================================================
+[2025-12-09T21:04:03.315Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T21:04:03.315Z] [INFO] Timestamp: 2025-12-09T21:04:03.315Z
+[2025-12-09T21:04:03.315Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T21:04:03.316Z] [INFO] Arguments: []
+[2025-12-09T21:04:03.316Z] [INFO] Process ID: 4272
+[2025-12-09T21:04:03.316Z] [INFO] Node Version: v22.19.0
+[2025-12-09T21:04:03.316Z] [INFO] ============================================================
+[2025-12-09T21:04:03.316Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T21:04:03.316Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T21:04:03.317Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T21:04:03.317Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T21:04:03.318Z] [DEBUG] Machines file exists: true
+[2025-12-09T21:04:03.318Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:04:03.318Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:04:03.318Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T21:04:03.318Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T21:04:03.319Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T21:04:03.319Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T21:04:03.319Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T21:04:03.319Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T21:04:03.319Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T21:04:03.320Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T21:04:03.320Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T21:04:03.320Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T21:04:03.320Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T21:04:03.320Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T21:04:03.320Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T21:04:03.320Z] [INFO] Registering MCP tools...
+[2025-12-09T21:04:03.320Z] [INFO] Registering execute-command tool...
+[2025-12-09T21:04:03.321Z] [INFO] execute-command tool registered successfully
+[2025-12-09T21:04:03.321Z] [INFO] Tools registered successfully
+[2025-12-09T21:04:03.321Z] [INFO] Starting MCP transport...
+[2025-12-09T21:04:03.322Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T21:04:10.918Z] [INFO] ============================================================
+[2025-12-09T21:04:10.920Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T21:04:10.920Z] [INFO] Timestamp: 2025-12-09T21:04:10.920Z
+[2025-12-09T21:04:10.920Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T21:04:10.921Z] [INFO] Arguments: []
+[2025-12-09T21:04:10.921Z] [INFO] Process ID: 25888
+[2025-12-09T21:04:10.921Z] [INFO] Node Version: v22.19.0
+[2025-12-09T21:04:10.921Z] [INFO] ============================================================
+[2025-12-09T21:04:10.922Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T21:04:10.922Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T21:04:10.923Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T21:04:10.923Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T21:04:10.923Z] [DEBUG] Machines file exists: true
+[2025-12-09T21:04:10.923Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:04:10.924Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T21:04:10.924Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T21:04:10.924Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T21:04:10.924Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T21:04:10.925Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T21:04:10.925Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T21:04:10.925Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T21:04:10.925Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T21:04:10.925Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T21:04:10.926Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T21:04:10.926Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T21:04:10.926Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T21:04:10.926Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T21:04:10.926Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T21:04:10.926Z] [INFO] Registering MCP tools...
+[2025-12-09T21:04:10.926Z] [INFO] Registering execute-command tool...
+[2025-12-09T21:04:10.927Z] [INFO] execute-command tool registered successfully
+[2025-12-09T21:04:10.927Z] [INFO] Tools registered successfully
+[2025-12-09T21:04:10.928Z] [INFO] Starting MCP transport...
+[2025-12-09T21:04:10.928Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T22:55:05.260Z] [INFO] ============================================================
+[2025-12-09T22:55:05.261Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T22:55:05.261Z] [INFO] Timestamp: 2025-12-09T22:55:05.261Z
+[2025-12-09T22:55:05.261Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T22:55:05.261Z] [INFO] Arguments: []
+[2025-12-09T22:55:05.261Z] [INFO] Process ID: 19360
+[2025-12-09T22:55:05.261Z] [INFO] Node Version: v22.19.0
+[2025-12-09T22:55:05.262Z] [INFO] ============================================================
+[2025-12-09T22:55:05.262Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T22:55:05.262Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T22:55:05.262Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T22:55:05.263Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T22:55:05.263Z] [DEBUG] Machines file exists: true
+[2025-12-09T22:55:05.263Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T22:55:05.263Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T22:55:05.264Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T22:55:05.264Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T22:55:05.264Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T22:55:05.264Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T22:55:05.264Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T22:55:05.264Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T22:55:05.265Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T22:55:05.265Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T22:55:05.265Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T22:55:05.265Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T22:55:05.265Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T22:55:05.265Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T22:55:05.265Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T22:55:05.266Z] [INFO] Registering MCP tools...
+[2025-12-09T22:55:05.266Z] [INFO] Registering execute-command tool...
+[2025-12-09T22:55:05.266Z] [INFO] execute-command tool registered successfully
+[2025-12-09T22:55:05.267Z] [INFO] Tools registered successfully
+[2025-12-09T22:55:05.267Z] [INFO] Starting MCP transport...
+[2025-12-09T22:55:05.268Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T22:59:02.823Z] [INFO] ============================================================
+[2025-12-09T22:59:02.824Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T22:59:02.824Z] [INFO] Timestamp: 2025-12-09T22:59:02.824Z
+[2025-12-09T22:59:02.824Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T22:59:02.825Z] [INFO] Arguments: []
+[2025-12-09T22:59:02.825Z] [INFO] Process ID: 37540
+[2025-12-09T22:59:02.825Z] [INFO] Node Version: v22.19.0
+[2025-12-09T22:59:02.825Z] [INFO] ============================================================
+[2025-12-09T22:59:02.825Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T22:59:02.825Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T22:59:02.826Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T22:59:02.826Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T22:59:02.826Z] [DEBUG] Machines file exists: true
+[2025-12-09T22:59:02.826Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T22:59:02.826Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T22:59:02.827Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T22:59:02.827Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T22:59:02.827Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T22:59:02.827Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T22:59:02.827Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T22:59:02.828Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T22:59:02.828Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T22:59:02.829Z] [INFO] Registering MCP tools...
+[2025-12-09T22:59:02.829Z] [INFO] Registering execute-command tool...
+[2025-12-09T22:59:02.830Z] [INFO] execute-command tool registered successfully
+[2025-12-09T22:59:02.830Z] [INFO] Tools registered successfully
+[2025-12-09T22:59:02.830Z] [INFO] Starting MCP transport...
+[2025-12-09T22:59:02.831Z] [INFO] SSH MCP Server is ready and running
+[2025-12-09T23:23:13.195Z] [INFO] ============================================================
+[2025-12-09T23:23:13.196Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-09T23:23:13.196Z] [INFO] Timestamp: 2025-12-09T23:23:13.196Z
+[2025-12-09T23:23:13.196Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-09T23:23:13.196Z] [INFO] Arguments: []
+[2025-12-09T23:23:13.197Z] [INFO] Process ID: 38876
+[2025-12-09T23:23:13.197Z] [INFO] Node Version: v22.19.0
+[2025-12-09T23:23:13.197Z] [INFO] ============================================================
+[2025-12-09T23:23:13.197Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-09T23:23:13.197Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-09T23:23:13.198Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-09T23:23:13.198Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-09T23:23:13.198Z] [DEBUG] Machines file exists: true
+[2025-12-09T23:23:13.199Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T23:23:13.199Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-09T23:23:13.199Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-09T23:23:13.199Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-09T23:23:13.200Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-09T23:23:13.200Z] [INFO] Configured 8 SSH server(s):
+[2025-12-09T23:23:13.200Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-09T23:23:13.200Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-09T23:23:13.201Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-09T23:23:13.201Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-09T23:23:13.201Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-09T23:23:13.201Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-09T23:23:13.201Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-09T23:23:13.201Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-09T23:23:13.201Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-09T23:23:13.201Z] [INFO] Registering MCP tools...
+[2025-12-09T23:23:13.202Z] [INFO] Registering execute-command tool...
+[2025-12-09T23:23:13.202Z] [INFO] execute-command tool registered successfully
+[2025-12-09T23:23:13.203Z] [INFO] Tools registered successfully
+[2025-12-09T23:23:13.203Z] [INFO] Starting MCP transport...
+[2025-12-09T23:23:13.203Z] [INFO] SSH MCP Server is ready and running
+[2025-12-10T00:05:04.114Z] [INFO] ============================================================
+[2025-12-10T00:05:04.115Z] [INFO] SSH MCP SERVER STARTING
+[2025-12-10T00:05:04.115Z] [INFO] Timestamp: 2025-12-10T00:05:04.115Z
+[2025-12-10T00:05:04.115Z] [INFO] Working Directory: D:\syncfolder\projects\claude\claude-code-router
+[2025-12-10T00:05:04.115Z] [INFO] Arguments: []
+[2025-12-10T00:05:04.115Z] [INFO] Process ID: 628
+[2025-12-10T00:05:04.116Z] [INFO] Node Version: v22.19.0
+[2025-12-10T00:05:04.116Z] [INFO] ============================================================
+[2025-12-10T00:05:04.116Z] [INFO] Starting SSH MCP Server with stdio transport...
+[2025-12-10T00:05:04.116Z] [INFO] This server will be controlled by Claude Desktop via stdin/stdout
+[2025-12-10T00:05:04.116Z] [INFO] Starting SSH MCP Server initialization...
+[2025-12-10T00:05:04.117Z] [INFO] Loading machines from: D:\syncfolder\projects\claude\ssh-mcp-server\machines.json
+[2025-12-10T00:05:04.117Z] [DEBUG] Machines file exists: true
+[2025-12-10T00:05:04.117Z] [DEBUG] Raw machines data: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-10T00:05:04.117Z] [DEBUG] Parsed 8 machines: [
+  {
+    "machine_id": "zurgl.executeinc.com",
+    "label": "zurgl.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgl.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "spark1.executeinc.com",
+    "label": "spark1.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "spark1.executeinc.com",
+      "port": 22,
+      "username": "ksully",
+      "keyPath": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc2.executeinc.com",
+    "label": "zurgc2.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc2.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc3.executeinc.com",
+    "label": "zurgc3.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc3.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgc4.executeinc.com",
+    "label": "zurgc4.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgc4.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs5.executeinc.com",
+    "label": "zurgs5.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs5.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs6.executeinc.com",
+    "label": "zurgs6.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs6.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+    }
+  },
+  {
+    "machine_id": "zurgs7.executeinc.com",
+    "label": "zurgs7.executeinc.com",
+    "os": "ubuntu",
+    "source": "local",
+    "ssh": {
+      "host": "zurgs7.executeinc.com",
+      "port": 88,
+      "username": "ksully",
+      "keyPath": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+    }
+  }
+]
+[2025-12-10T00:05:04.117Z] [INFO] Loaded 8 machine(s) from machines.json
+[2025-12-10T00:05:04.117Z] [INFO] SSH Config: {
+  "zurgl.executeinc.com": {
+    "name": "zurgl.executeinc.com",
+    "host": "zurgl.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/zurgl.executeinc.com.ksully.rsa"
+  },
+  "spark1.executeinc.com": {
+    "name": "spark1.executeinc.com",
+    "host": "spark1.executeinc.com",
+    "port": 22,
+    "username": "ksully",
+    "privateKey": "C:/Users/execu/.ssh/spark1.ksully.rsa"
+  },
+  "zurgc2.executeinc.com": {
+    "name": "zurgc2.executeinc.com",
+    "host": "zurgc2.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc2.executeinc.com.ksully.rsa"
+  },
+  "zurgc3.executeinc.com": {
+    "name": "zurgc3.executeinc.com",
+    "host": "zurgc3.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc3.executeinc.com.ksully.rsa"
+  },
+  "zurgc4.executeinc.com": {
+    "name": "zurgc4.executeinc.com",
+    "host": "zurgc4.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgc4.executeinc.com.ksully.rsa"
+  },
+  "zurgs5.executeinc.com": {
+    "name": "zurgs5.executeinc.com",
+    "host": "zurgs5.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs5.executeinc.com.ksully.rsa"
+  },
+  "zurgs6.executeinc.com": {
+    "name": "zurgs6.executeinc.com",
+    "host": "zurgs6.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs6.executeinc.com.ksully.rsa"
+  },
+  "zurgs7.executeinc.com": {
+    "name": "zurgs7.executeinc.com",
+    "host": "zurgs7.executeinc.com",
+    "port": 88,
+    "username": "ksully",
+    "privateKey": "c:/Users/execu/.ssh/zurgs7.executeinc.com.ksully.rsa"
+  }
+}
+[2025-12-10T00:05:04.118Z] [DEBUG] Started SSH idle timeout cleanup (interval: 300000ms, timeout: 1800000ms)
+[2025-12-10T00:05:04.118Z] [INFO] Configured 8 SSH server(s):
+[2025-12-10T00:05:04.118Z] [INFO]   - zurgl.executeinc.com (ksully@zurgl.executeinc.com:88)
+[2025-12-10T00:05:04.118Z] [INFO]   - spark1.executeinc.com (ksully@spark1.executeinc.com:22)
+[2025-12-10T00:05:04.118Z] [INFO]   - zurgc2.executeinc.com (ksully@zurgc2.executeinc.com:88)
+[2025-12-10T00:05:04.118Z] [INFO]   - zurgc3.executeinc.com (ksully@zurgc3.executeinc.com:88)
+[2025-12-10T00:05:04.119Z] [INFO]   - zurgc4.executeinc.com (ksully@zurgc4.executeinc.com:88)
+[2025-12-10T00:05:04.119Z] [INFO]   - zurgs5.executeinc.com (ksully@zurgs5.executeinc.com:88)
+[2025-12-10T00:05:04.119Z] [INFO]   - zurgs6.executeinc.com (ksully@zurgs6.executeinc.com:88)
+[2025-12-10T00:05:04.119Z] [INFO]   - zurgs7.executeinc.com (ksully@zurgs7.executeinc.com:88)
+[2025-12-10T00:05:04.119Z] [INFO] SSH connections will be established on demand when needed.
+[2025-12-10T00:05:04.119Z] [INFO] Registering MCP tools...
+[2025-12-10T00:05:04.119Z] [INFO] Registering execute-command tool...
+[2025-12-10T00:05:04.120Z] [INFO] execute-command tool registered successfully
+[2025-12-10T00:05:04.120Z] [INFO] Tools registered successfully
+[2025-12-10T00:05:04.120Z] [INFO] Starting MCP transport...
+[2025-12-10T00:05:04.120Z] [INFO] SSH MCP Server is ready and running

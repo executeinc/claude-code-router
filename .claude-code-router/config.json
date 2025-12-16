@@ -1,0 +1,47 @@
+{
+  "LOG": true,
+  "LOG_LEVEL": "debug",
+  "CLAUDE_PATH": "",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "APIKEY": "",
+  "API_TIMEOUT_MS": 600000,
+  "PROXY_URL": "",
+  "transformers": [],
+  "Providers": [
+    {
+      "name": "spark1",
+      "api_base_url": "http://spark1:8001/v1/chat/completions",
+      "api_key": "notused",
+      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+    },
+    {
+      "name": "zurgs7",
+      "api_base_url": "http://zurgs7:8000/v1/chat/completions",
+      "api_key": "notused",
+      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+    },
+    {
+      "name": "spark1-traefik",
+      "api_base_url": "http://localLB.executeinc.com/vllm/v1/chat/completions",
+      "api_key": "notused",
+      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+    },
+    {
+      "name": "zurgs7-traefik",
+      "api_base_url": "http://localLB.executeinc.com/vllm/v1/chat/completions",
+      "api_key": "notused",
+      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+    }
+  ],
+  "Router": {
+    "default": "spark1,Qwen/Qwen2.5-3B-Instruct",
+    "background": "",
+    "think": "",
+    "longContext": "",
+    "longContextThreshold": 200000,
+    "webSearch": "",
+    "image": ""
+  },
+  "CUSTOM_ROUTER_PATH": ""
+}

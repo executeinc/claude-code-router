@@ -25,6 +25,9 @@ import { EventEmitter } from "node:events";
 
 const event = new EventEmitter()
 
+// Flag to track if system prompt has been logged
+let systemPromptLogged = false;
+
 async function initializeClaudeConfig() {
   const homeDir = homedir();
   const configPath = join(homeDir, ".claude.json");
@@ -159,6 +162,14 @@ async function run(options: RunOptions = {}) {
   });
   server.addHook("preHandler", async (req, reply) => {
     if (req.url.startsWith("/v1/messages") && !req.url.startsWith("/v1/messages/count_tokens")) {
+      // Log system prompt on first request
+      if (!systemPromptLogged && req.body?.system) {
+        systemPromptLogged = true;
+        req.log.info("\n========== CLAUDE CODE SYSTEM PROMPT ==========");
+        req.log.info(JSON.stringify(req.body.system, null, 2));
+        req.log.info("==============================================");
+      }
+
       const useAgents = []
 
       for (const agent of agentsManager.getAllAgents()) {
@@ -188,6 +199,39 @@ async function run(options: RunOptions = {}) {
       if (useAgents.length) {
         req.agents = useAgents;
       }
+
+      // Strip system context if provider has stripSystemContext: true (unless --no-strip-system flag is set)
+      if (req.body?.model && config.Providers) {
+        // Check if no-strip-system flag file exists
+        const noStripFlagFile = join(homedir(), ".claude-code-router", ".no-strip-system.json");
+        const noStripSystemEnabled = await new Promise(resolve => {
+          existsSync(noStripFlagFile) ? resolve(true) : resolve(false);
+        });
+
+        if (!noStripSystemEnabled) {
+          const modelStr = req.body.model;
+          let providerName = modelStr;
+
+          // Extract provider name from "provider,model" format or model override
+          if (modelStr.includes(",")) {
+            providerName = modelStr.split(",")[0];
+          }
+
+          // Find provider in config
+          const provider = config.Providers.find((p: any) =>
+            p.name.toLowerCase() === providerName.toLowerCase()
+          );
+
+          // If provider has stripSystemContext enabled, clear system field
+          if (provider?.stripSystemContext && req.body?.system) {
+            req.log.info(`Stripping system context for provider: ${provider.name}`);
+            delete req.body.system;
+          }
+        } else {
+          req.log.info("System context stripping disabled by --no-strip-system flag");
+        }
+      }
+
       await router(req, reply, {
         config,
         event

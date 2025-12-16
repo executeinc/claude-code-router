@@ -124,6 +124,21 @@ async function main() {
       await activateCommand();
       break;
     case "code":
+      // Parse --model/-m flag and --no-strip-system flag
+      let providerOverride: string | undefined;
+      let noStripSystem = false;
+      const filteredArgs: string[] = [];
+      for (let i = 3; i < process.argv.length; i++) {
+        if (process.argv[i] === "-m" || process.argv[i] === "--model") {
+          providerOverride = process.argv[i + 1];
+          i++; // Skip next arg (the provider name)
+        } else if (process.argv[i] === "--no-strip-system") {
+          noStripSystem = true;
+        } else {
+          filteredArgs.push(process.argv[i]);
+        }
+      }
+
       if (!isRunning) {
         console.log("Service not running, starting service...");
         const cliPath = join(__dirname, "cli.js");
@@ -132,29 +147,15 @@ async function main() {
           stdio: "ignore",
         });
 
-        // let errorMessage = "";
-        // startProcess.stderr?.on("data", (data) => {
-        //   errorMessage += data.toString();
-        // });
-
         startProcess.on("error", (error) => {
           console.error("Failed to start service:", error.message);
           process.exit(1);
         });
 
-        // startProcess.on("close", (code) => {
-        //   if (code !== 0 && errorMessage) {
-        //     console.error("Failed to start service:", errorMessage.trim());
-        //     process.exit(1);
-        //   }
-        // });
-
         startProcess.unref();
 
         if (await waitForService()) {
-          // Join all code arguments into a single string to preserve spaces within quotes
-          const codeArgs = process.argv.slice(3);
-          executeCodeCommand(codeArgs);
+          executeCodeCommand(filteredArgs, providerOverride, noStripSystem);
         } else {
           console.error(
             "Service startup timeout, please manually run `ccr start` to start the service"
@@ -162,9 +163,7 @@ async function main() {
           process.exit(1);
         }
       } else {
-        // Join all code arguments into a single string to preserve spaces within quotes
-        const codeArgs = process.argv.slice(3);
-        executeCodeCommand(codeArgs);
+        executeCodeCommand(filteredArgs, providerOverride, noStripSystem);
       }
       break;
     case "ui":

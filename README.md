@@ -1,3 +1,36 @@
+How It Works
+
+1.  When you use ccr code -m spark1llama3.18b "your prompt":
+
+    - The router intercepts the request
+    - Sees that spark1llama3.18b has stripSystemContext: true
+    - Deletes the 30K+ token Claude Code system context
+    - Forwards only your prompt to Ollama
+
+2.  The model receives a clean prompt without:
+
+        - Git status
+        - Working directory info
+        - Tool descriptions
+        - Environment variables
+        - Claude Code instructions
+
+    what
+    Usage
+
+# With system context stripped (clean prompt)
+
+ccr code -m spark1llama3.18b "Design a moderation algorithm"
+
+# Without stripping (full Claude context)
+
+ccr code -m spark1mistralLarge "Design a moderation algorithm"
+
+The feature is now active and testing. You can add "stripSystemContext": true to any provider in your config to enable this behavior!
+
+ccr code -m spark1mistralLarge "Write a Python function to reverse a string"
+this should talk to an ollama big model for code creation/debugging
+
 ![](blog/images/claude-code-router-img.png)
 
 [![](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87%E7%89%88-ff0000?style=flat)](README_zh.md)
@@ -7,9 +40,10 @@
 <hr>
 
 ![](blog/images/sponsors/glm-en.jpg)
-> This project is sponsored by Z.ai, supporting us with their GLM CODING PLAN.    
-> GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.6 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.     
-> Get 10% OFF GLM CODING PLAN：https://z.ai/subscribe?ic=8JVLJQFSKB     
+
+> This project is sponsored by Z.ai, supporting us with their GLM CODING PLAN.  
+> GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.6 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.  
+> Get 10% OFF GLM CODING PLAN：https://z.ai/subscribe?ic=8JVLJQFSKB
 
 > A powerful tool to route Claude Code requests to different models and customize any request.
 
@@ -48,11 +82,13 @@ npm install -g @musistudio/claude-code-router
 Create and configure your config file. The router supports two config locations:
 
 #### Global Config (Default)
+
 ```
 ~/.claude-code-router/config.json
 ```
 
 #### Local Project Config (New)
+
 ```
 <project-directory>/.claude-code-router/config.json
 ```
@@ -60,6 +96,7 @@ Create and configure your config file. The router supports two config locations:
 **How it works:** When you run `ccr` commands, the router first checks for a local `.claude-code-router/config.json` in your current working directory. If found, it uses that config. Otherwise, it falls back to the global config.
 
 This allows you to:
+
 - Use different LLM providers per project
 - Run regular `claude` for Anthropic cloud alongside `ccr code` for local/custom providers
 - Keep project-specific routing configurations in version control
@@ -167,7 +204,10 @@ Here is a comprehensive example:
       "name": "modelscope",
       "api_base_url": "https://api-inference.modelscope.cn/v1/chat/completions",
       "api_key": "",
-      "models": ["Qwen/Qwen3-Coder-480B-A35B-Instruct", "Qwen/Qwen3-235B-A22B-Thinking-2507"],
+      "models": [
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+        "Qwen/Qwen3-235B-A22B-Thinking-2507"
+      ],
       "transformer": {
         "use": [
           [
@@ -204,11 +244,7 @@ Here is a comprehensive example:
       "name": "aihubmix",
       "api_base_url": "https://aihubmix.com/v1/chat/completions",
       "api_key": "sk-",
-      "models": [
-        "Z/glm-4.5",
-        "claude-opus-4-20250514",
-        "gemini-2.5-pro"
-      ]
+      "models": ["Z/glm-4.5", "claude-opus-4-20250514", "gemini-2.5-pro"]
     }
   ],
   "Router": {
@@ -230,6 +266,37 @@ Start Claude Code using the router:
 ccr code
 ```
 
+#### Command-Line Options
+
+**`--model` / `-m` - Override the default model**
+
+Specify a provider and model to use for this session:
+
+```shell
+ccr code -m spark1llama3.18b "your prompt"
+ccr code --model openrouter,anthropic/claude-3.5-sonnet "your prompt"
+```
+
+**`--no-strip-system` - Preserve full system context**
+
+By default, the router strips the Claude Code system prompt for providers configured with `stripSystemContext: true`. Use this flag to preserve the full system context:
+
+```shell
+ccr code --no-strip-system "your prompt"
+```
+
+This is useful for:
+- Debugging and understanding what Claude Code sends in its system prompt
+- Testing models with the full context
+- Inspecting the complete system prompt in logs
+
+When enabled, the system prompt will be logged to `~/.claude-code-router/logs/` with output like:
+```
+========== CLAUDE CODE SYSTEM PROMPT ==========
+[full system prompt JSON...]
+==============================================
+```
+
 > **Note**: After modifying the configuration file, you need to restart the service for the changes to take effect:
 >
 > ```shell
@@ -245,6 +312,7 @@ If you have a Claude Max subscription, Claude Code normally uses OAuth authentic
 3. **Routing requests**: All requests go through the router at `http://127.0.0.1:3456` which forwards them to your configured providers
 
 This allows you to:
+
 - Use `claude` command normally for Anthropic cloud (with your Claude Max subscription)
 - Use `ccr code` to route to local models (vLLM, Ollama) or alternative providers
 
@@ -274,6 +342,7 @@ This allows you to:
 The `ccr code` command automatically detects and loads your MCP (Model Context Protocol) server configuration. MCP servers provide additional tools and capabilities to Claude Code.
 
 **Default MCP config locations by platform:**
+
 - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Linux**: `~/.config/Claude/claude_desktop_config.json`
@@ -287,6 +356,7 @@ If your MCP config is in a different location, you can specify it in your router
 ```
 
 When running `ccr code`, you'll see the MCP config path in the startup output:
+
 ```
 🔧 Router config:
    ANTHROPIC_BASE_URL: http://127.0.0.1:3456
@@ -316,6 +386,7 @@ For users who prefer terminal-based workflows, you can use the interactive CLI m
 ```shell
 ccr model
 ```
+
 ![](blog/images/models.gif)
 
 This command provides an interactive interface to:
@@ -325,13 +396,13 @@ This command provides an interactive interface to:
 - Switch models: Quickly change which model is used for each router type
 - Add new models: Add models to existing providers
 - Create new providers: Set up complete provider configurations including:
-   - Provider name and API endpoint
-   - API key
-   - Available models
-   - Transformer configuration with support for:
-     - Multiple transformers (openrouter, deepseek, gemini, etc.)
-     - Transformer options (e.g., maxtoken with custom limits)
-     - Provider-specific routing (e.g., OpenRouter provider preferences)
+  - Provider name and API endpoint
+  - API key
+  - Available models
+  - Transformer configuration with support for:
+    - Multiple transformers (openrouter, deepseek, gemini, etc.)
+    - Transformer options (e.g., maxtoken with custom limits)
+    - Provider-specific routing (e.g., OpenRouter provider preferences)
 
 The CLI tool validates all inputs and provides helpful prompts to guide you through the configuration process, making it easy to manage complex setups without editing JSON files manually.
 
@@ -490,8 +561,8 @@ The `Router` object defines which model to use for different scenarios:
 - `image` (beta): Used for handling image-related tasks (supported by CCR’s built-in agent). If the model does not support tool calling, you need to set the `config.forceUseImageAgent` property to `true`.
 
 - You can also switch models dynamically in Claude Code with the `/model` command:
-`/model provider_name,model_name`
-Example: `/model openrouter,anthropic/claude-3.5-sonnet`
+  `/model provider_name,model_name`
+  Example: `/model openrouter,anthropic/claude-3.5-sonnet`
 
 #### Custom Router
 
@@ -544,6 +615,7 @@ Please help me analyze this code snippet for potential optimizations...
 ```
 
 ## Status Line (Beta)
+
 To better monitor the status of claude-code-router at runtime, version v1.0.40 includes a built-in statusline tool, which you can enable in the UI.
 ![statusline-config.png](/blog/images/statusline-config.png)
 
@@ -637,11 +709,10 @@ If you find this project helpful, please consider sponsoring its development. Yo
 
 A huge thank you to all our sponsors for their generous support!
 
-
 - [AIHubmix](https://aihubmix.com/)
 - [BurnCloud](https://ai.burncloud.com)
 - [302.AI](https://share.302.ai/ZGVF9w)
-- [Z智谱](https://www.bigmodel.cn/claude-code?ic=FPF9IVAGFJ)
+- [Z 智谱](https://www.bigmodel.cn/claude-code?ic=FPF9IVAGFJ)
 - @Simon Leischnig
 - [@duanshuaimin](https://github.com/duanshuaimin)
 - [@vrgitadmin](https://github.com/vrgitadmin)
@@ -679,7 +750,7 @@ A huge thank you to all our sponsors for their generous support!
 - [@congzhangzh](https://github.com/congzhangzh)
 - @\*\_
 - @Z\*m
-- @*鑫
+- @\*鑫
 - @c\*y
 - @\*昕
 - [@witsice](https://github.com/witsice)
@@ -730,13 +801,12 @@ A huge thank you to all our sponsors for their generous support!
 - @\*涛
 - [@苗大](https://github.com/WitMiao)
 - @\*呢
-- @\d*u
+- @\d\*u
 - @crizcraig
 - s\*s
 - \*火
 - \*勤
 - \*\*锟
 - \*涛
-
 
 (If your name is masked, please contact me via my homepage email to update it with your GitHub username.)

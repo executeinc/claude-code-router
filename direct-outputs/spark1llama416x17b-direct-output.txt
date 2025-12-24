@@ -1,0 +1,126 @@
+﻿### Moderation Selection Algorithm
+
+#### Overview
+
+The goal of this algorithm is to assign a moderator to a story based on their relevance and experience with similar content. The algorithm will consider the story's content search criteria and match it with moderators who have a history of moderating similar content.
+
+#### Step 1: Retrieve Story Content Search Criteria
+
+Retrieve the story's content search criteria, including topicId, personSubjectId, and thingId.
+
+#### Step 2: Find Matching Moderators
+
+Use the `searchTermGetMatchesWithTargetsAndCountsAndCriteria` behavior to find moderators whose content search criteria match the story's criteria. Sort the moderators based on the number of matching criteria.
+
+#### Step 3: Calculate Moderator Relevance
+
+For each moderator, calculate their relevance score based on their moderation history. Use the ModeratorHistory table to find the number of times a moderator has moderated content with similar search criteria.
+
+#### Step 4: Assign Moderator
+
+Assign the moderator with the highest relevance score to the story.
+
+### Pseudocode
+
+```python
+def assign_moderator(story):
+    # Retrieve story content search criteria
+    story_criteria = story.content_search.criteria
+
+    # Find matching moderators
+    moderators = search_term_get_matches_with_targets_and_counts_and_criteria(story_criteria)
+
+    # Calculate moderator relevance
+    for moderator in moderators:
+        moderator_relevance = calculate_moderator_relevance(moderator, story_criteria)
+        moderator.relevance_score = moderator_relevance
+
+    # Sort moderators by relevance score
+    moderators.sort(key=lambda x: x.relevance_score, reverse=True)
+
+    # Assign moderator with highest relevance score
+    assigned_moderator = moderators[0]
+
+    return assigned_moderator
+
+
+def calculate_moderator_relevance(moderator, story_criteria):
+    # Retrieve moderator's moderation history
+    moderation_history = ModeratorHistory.filter(moderator_id=moderator.id)
+
+    # Calculate relevance score
+    relevance_score = 0
+    for history in moderation_history:
+        if history.criteria == story_criteria:
+            relevance_score += 1
+
+    return relevance_score
+
+
+def search_term_get_matches_with_targets_and_counts_and_criteria(criteria):
+    # Implement search term behavior
+    # Return list of moderators with matching criteria
+    pass
+```
+
+### LoopBack 4 Implementation
+
+```javascript
+// moderator.controller.js
+const Moderator = require('./moderator.model');
+const Story = require('./story.model');
+
+exports.assignModerator = async (story) => {
+    const storyCriteria = story.contentSearch.criteria;
+    const moderators = await Moderator.find().filter((moderator) => {
+        // implement search term behavior
+    });
+
+    // calculate moderator relevance
+    for (const moderator of moderators) {
+        const relevanceScore = await calculateModeratorRelevance(moderator, storyCriteria);
+        moderator.relevanceScore = relevanceScore;
+    }
+
+    // sort moderators by relevance score
+    moderators.sort((a, b) => b.relevanceScore - a.relevanceScore);
+
+    // assign moderator with highest relevance score
+    const assignedModerator = moderators[0];
+
+    return assignedModerator;
+};
+
+async function calculateModeratorRelevance(moderator, storyCriteria) {
+    const moderationHistory = await ModeratorHistory.find({
+        where: { moderatorId: moderator.id },
+    });
+
+    let relevanceScore = 0;
+    for (const history of moderationHistory) {
+        if (history.criteria === storyCriteria) {
+            relevanceScore += 1;
+        }
+    }
+
+    return relevanceScore;
+}
+```
+
+### Example Use Case
+
+```javascript
+// story.controller.js
+const Story = require('./story.model');
+const Moderator = require('./moderator.model');
+
+exports.createStory = async (req, res) => {
+    const story = new Story(req.body);
+    await story.save();
+
+    // assign moderator
+    const assignedModerator = await assignModerator(story);
+
+    res.json({ assignedModerator });
+};
+```

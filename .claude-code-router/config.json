@@ -10,32 +10,109 @@
   "transformers": [],
   "Providers": [
     {
-      "name": "spark1",
-      "api_base_url": "http://spark1:8001/v1/chat/completions",
-      "api_key": "notused",
-      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+      "name": "spark1mistral7b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["mistral:7b"]
     },
     {
-      "name": "zurgs7",
-      "api_base_url": "http://zurgs7:8000/v1/chat/completions",
-      "api_key": "notused",
-      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+      "name": "spark1llama4latest",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["llama4:latest"]
+    },
+
+    {
+      "name": "spark1starcoder2:latest",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["starcoder2:latest"]
+    },
+
+    {
+      "name": "spark1qwen3-coder:30b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["qwen3-coder:30b"]
+    },
+
+    {
+      "name": "spark1starcoder23b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["starcoder2:3b"]
+    },
+
+    {
+      "name": "spark1mistral7b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["mistral:7b"]
+    },
+
+    {
+      "name": "spark1starcoder215b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["starcoder2:15b"]
+    },
+
+    {
+      "name": "spark1gptoss20b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["gpt-oss:20b"]
+    },
+
+    {
+      "name": "spark1llama3.18b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["llama3.1:8b"],
+      "stripSystemContext": true
+    },
+
+    {
+      "name": "spark1llama416x17b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["llama4:16x17b"]
+    },
+
+    {
+      "name": "spark1mistrallarge123b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["mistral-large:123b"]
     },
     {
-      "name": "spark1-traefik",
-      "api_base_url": "http://localLB.executeinc.com/vllm/v1/chat/completions",
-      "api_key": "notused",
-      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+      "name": "spark1gemma34b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["gemma3:4b"]
     },
     {
-      "name": "zurgs7-traefik",
-      "api_base_url": "http://localLB.executeinc.com/vllm/v1/chat/completions",
-      "api_key": "notused",
-      "models": ["Qwen/Qwen2.5-3B-Instruct"]
+      "name": "spark1gptoss120b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["gpt-oss:120b"]
+    },
+    {
+      "name": "spark1phi338b",
+      "api_base_url": "http://spark1:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": ["phi3:3.8b"]
     }
+
+    // {
+    //   "name": "spark1",
+    //   "api_base_url": "http://spark1:8001/v1/chat/completions",
+    //   "api_key": "notused",
+    //   "models": ["Qwen/Qwen2.5-3B-Instruct"]
+    // },
   ],
   "Router": {
-    "default": "spark1,Qwen/Qwen2.5-3B-Instruct",
+    "default": "spark1llama3.18b,llama3.1:8b",
     "background": "",
     "think": "",
     "longContext": "",

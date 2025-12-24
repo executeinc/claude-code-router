@@ -1,0 +1,24 @@
+﻿Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒÄ» Using provider: spark1mistral7b (mistral:7b)
+Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒöº Router config:
+   ANTHROPIC_BASE_URL: http://127.0.0.1:3456
+   ANTHROPIC_API_KEY: test...
+   primaryProvider: api-key
+   MCP config: C:\Users\execu\AppData\Roaming\Claude\claude_desktop_config.json
+ 1. The first message does not require a response from the user, it only provides context and information about the environment the assistant is currently operating in.
+
+Here's an explanation of the important points:
+
+- The working directory is `D:\syncfolder\projects\claude\claude-code-router`. This is where the assistant will look for files and perform operations by default. There are other working directories specified as well, but this is the main one used in this current conversation.
+
+- The platform is Windows (win32), the OS version is MINGW64_NT-10.0-26100 3.6.4-b9f03e96.x86_64, and today's date is 2025-12-10.
+
+- The assistant's model is named Sonnet 4.5 (claude-sonnet-4-5-20250929) with a cutoff of January 2025.
+
+- The Git status provides information about the current branch, commits, and file changes in this repository. This information may be useful for context during the conversation.
+
+The second message contains information about the assistant's knowledge cutoff, which means the most recent information it was trained on is from January 2025. When making recommendations or providing information, this information may not reflect the latest developments or updates outside of that timeframe.
+
+Lastly, the assistant knows that the most recent frontier Claude model is Claude Opus 4.5 (model ID: 'claude-opus-4-5-20251101'). This may be useful for future reference if the conversation evolves and the user requires assistance with a more advanced version of the assistant.
+

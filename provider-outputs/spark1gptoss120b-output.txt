@@ -1,0 +1,10 @@
+﻿Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒÄ» Using provider: spark1gptoss120b (gpt-oss:120b)
+Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒöº Router config:
+   ANTHROPIC_BASE_URL: http://127.0.0.1:3456
+   ANTHROPIC_API_KEY: test...
+   primaryProvider: api-key
+   MCP config: C:\Users\execu\AppData\Roaming\Claude\claude_desktop_config.json
+IΓÇÖm not sure what youΓÇÖd like me to design. Could you let me know what part of the project youΓÇÖd like a design for (e.g., a new feature, a refactor, an architecture component, etc.) and any specific requirements or constraints you have in mind?
+

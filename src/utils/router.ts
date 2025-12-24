@@ -109,6 +109,18 @@ const getUseModel = async (
   config: any,
   lastUsage?: Usage | undefined
 ) => {
+  // Check for model override file
+  const overrideFile = join(HOME_DIR, ".model-override.json");
+  try {
+    const overrideData = JSON.parse(await readFile(overrideFile, "utf8"));
+    // Use override if it's less than 5 minutes old
+    if (overrideData.timestamp && Date.now() - overrideData.timestamp < 300000) {
+      return `${overrideData.provider},${overrideData.model}`;
+    }
+  } catch (err) {
+    // No override file or invalid - continue normally
+  }
+
   const projectSpecificRouter = await getProjectSpecificRouter(req);
   const Router = projectSpecificRouter || config.Router;
 

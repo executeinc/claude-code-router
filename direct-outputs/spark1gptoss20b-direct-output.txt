@@ -1,0 +1,263 @@
+﻿Below is a **highâlevel design** and **pseudocode** for a moderationâassignment routine that can be dropped into a LoopBackâ¯4 API.  
+The goal:
+
+| Step | What we need to know | How we get it (repo call / helper) |
+|------|----------------------|-----------------------------------|
+| 1 | What **criteria** the submitted story is tagged with | `Story` â `ContentSearch` (oneâtoâone) |
+| 2 | Which moderators have those same/overlapping criteria | `UserProfile` â `ContentSearch` (manyâtoâone) |
+| 3 | How many times each moderator has already moderated **any** story that shared those criteria | `ModeratorHistory` â `Story` â `ContentSearch` |
+
+Once we have the two quantitative pieces we can **rank** the moderators:
+
+1. **Match count** â number of story criteria that appear in a moderatorâs profile.  
+2. **Workâload penalty** â number of past moderations on stories that contained the same criteria (the higher the better to avoid overâloading).
+
+The algorithm returns the top *N* moderators sorted primarily by match count (descending) and secondarily by moderation load (ascending).  
+(You can of course change the sorting if you want to give a penalty for workâload or favour new moderators.)
+
+---
+
+## 1.Â Entity / Repository relationships
+
+```ts
+// 1âtoâ1
+Story      (storyId) <-> ContentSearch (contentSearchId)
+UserProfile (userProfileId) <-> ContentSearch (contentSearchId)
+
+// 1âtoâmany
+ModeratorHistory (moderatorHistoryId, moderatorId, storyId)
+ UserProfile (userProfileId) <-- ModeratorHistory (moderatorId)
+```
+
+> **Assumption** â each `ContentSearch` carries an array `criteriaIds: string[]` (topicId, personSubjectId, thingId, â¦)
+
+---
+
+## 2.Â The business helper
+
+The problem statement gives a helper called
+
+```
+searchTermGetMatchesWithTargetsAndCountsAndCriteria(criteriaIds: string[])
+```
+
+It is expected that the helper returns, per moderator, how many of the supplied
+criteria match their own `ContentSearch`.  
+The contract (illustrated below) can be tuned to your real implementation.
+
+```ts
+type MatchResult = {
+  moderatorId: string;
+  matchCount: number;      // # of criteria that appear in moderator's profile
+  matchedCriteria: string[]; // optional: which criteria matched
+};
+
+// example return
+[
+  {moderatorId: '1', matchCount: 3, matchedCriteria: ['t12', 'p5', 'c7']},
+  {moderatorId: '2', matchCount: 1, matchedCriteria: ['t12']},
+  ...
+]
+```
+
+---
+
+## 3.Â Getting moderationâhistory counts
+
+To know how busy a moderator has been with stories that *share any of the same criteria*, we query `ModeratorHistory` with a compound filter:
+
+```ts
+// pseudocode â not a working query
+ModeratorHistoryRepository.find({
+  where: {
+    moderatorId: { inq: moderatorIdList },
+    storyId: { inq: relatedStoryIds }   // stories whose ContentSearch shares criteria
+  },
+  fields: ['moderatorId'] // only need to group by moderator
+});
+```
+
+The trick is to derive `relatedStoryIds`.  
+Instead of pulling every story into memory, you can perform a join (or the equivalent in your DB engine) that matches any `ContentSearch.criteriaIds â storyCriteria` is nonâempty.  
+The result is a flat array of `{moderatorId, historyCount}` that you can then aggregate.
+
+> **Optimization tip:**  
+> Store a denormalised column *âcriteriaHashâ* on `ModeratorHistory` so you can match quickly on common sets.
+
+---
+
+## 4.Â Full algorithm â Step by Step
+
+Below is **TypeScriptâish** pseudocode that stitches everything together inside a LoopBack 4â¯**service**.
+
+```ts
+import {
+  StoryRepository,
+  UserProfileRepository,
+  ContentSearchRepository,
+  ModeratorHistoryRepository,
+} from '../repositories';
+import {MatchResult, searchTermGetMatchesWithTargetsAndCountsAndCriteria} from '../helpers';
+
+interface ModeratorScore {
+  moderatorId: string;
+  matchCount: number;
+  moderationCount: number; // how many past moderations on related criteria
+  profile: UserProfile;
+}
+
+export class ModerationService {
+  constructor(
+    @repository(StoryRepository) private storyRepo: StoryRepository,
+    @repository(UserProfileRepository) private profileRepo: UserProfileRepository,
+    @repository(ContentSearchRepository) private csRepo: ContentSearchRepository,
+    @repository(ModeratorHistoryRepository) private histRepo: ModeratorHistoryRepository,
+  ) {}
+
+  /**
+   * Returns the best moderators for a given story.
+   *
+   * @param storyId   id of the story that is about to be published
+   * @param topN      how many moderators to return; default 3
+   */
+  async pickModerators(storyId: string, topN = 3): Promise<ModeratorScore[]> {
+    /* ----------------------------------------------------- */
+    /* 1.  Grab the story and its criteria                  */
+    /* ----------------------------------------------------- */
+    const storyWithCs = await this.storyRepo.findById(storyId, {
+      include: [{relation: 'contentSearch'}],
+    });
+
+    const criteriaIds: string[] = storyWithCs.contentSearch.criteriaIds;
+
+    /* ----------------------------------------------------- */
+    /* 2.  Find all moderators (profiles) and their CS      */
+    /* ----------------------------------------------------- */
+    const moderators = await this.profileRepo.find({
+      include: [{relation: 'contentSearch'}],
+      // you could add a where clause if you want to preâfilter
+    });
+
+    /* ----------------------------------------------------- */
+    /* 3.  Compute the match count via helper                */
+    /* ----------------------------------------------------- */
+    const matchResults: MatchResult[] =
+      searchTermGetMatchesWithTargetsAndCountsAndCriteria(criteriaIds);
+
+    /* ----------------------------------------------------- */
+    /* 4.  Determine related stories (any that share criteria)
+           and preâcompute the histories per moderator      */
+    /* ----------------------------------------------------- */
+    // We need the id of *any* story that has ANY of the criteria
+    const relatedStories = await this.storyRepo.find({
+      where: { criteriaIds: { intersect: criteriaIds } }, // pseudoâSQL
+      fields: ['storyId'],
+    });
+    const relatedStoryIds = relatedStories.map(s => s.storyId);
+
+    // Grab all histories for the moderators that reference these stories
+    const rawHistories = await this.histRepo.find({
+      where: {
+        moderatorId: { inq: moderators.map(m => m.userProfileId) },
+        storyId: { inq: relatedStoryIds },
+      },
+      fields: ['moderatorId'],
+    });
+
+    // Aggregate by moderator
+    const historyCountMap = rawHistories.reduce<Record<string, number>>((acc, hist) => {
+      acc[hist.moderatorId] = (acc[hist.moderatorId] ?? 0) + 1;
+      return acc;
+    }, {});
+
+    /* ----------------------------------------------------- */
+    /* 5.  Build the score objects and sort                 */
+    /* ----------------------------------------------------- */
+    const scores: ModeratorScore[] = moderators.map(profile => {
+      // matchCount -> look it up in matchResults
+      const mr = matchResults.find(m => m.moderatorId === profile.userProfileId);
+      const matchCount = mr ? mr.matchCount : 0;
+
+      const moderationCount = historyCountMap[profile.userProfileId] ?? 0;
+
+      return {
+        moderatorId: profile.userProfileId,
+        matchCount,
+        moderationCount,
+        profile,
+      };
+    });
+
+    scores.sort((a, b) => {
+      // more matching criteria is better
+      if (b.matchCount !== a.matchCount) return b.matchCount - a.matchCount;
+      // if tie, prefer moderator who has done fewer matched moderations
+      return a.moderationCount - b.moderationCount;
+    });
+
+    /* ----------------------------------------------------- */
+    /* 6.  Return top N                                    */
+    /* ----------------------------------------------------- */
+    return scores.slice(0, topN);
+  }
+}
+```
+
+### What each part does
+
+| Section | What you get | Why it matters |
+|---------|--------------|----------------|
+| 1 | The storyâs criteria | The âtargetâ criteria to match against moderators |
+| 2 | Moderator profiles & their ContentSearch | We need to know every moderatorâs skill set |
+| 3 | `matchCount` per moderator | How well the moderatorâs focus aligns with this story |
+| 4 | Histogram of past history per moderator | Avoid overâloading a moderator who repeatedly handled the same topic |
+| 5 | Score objects + sorting | Gives you a single, comparable âscoreâ per moderator |
+| 6 | Return top *N* | Typical moderation worklist shows the best candidate(s) |
+
+---
+
+## 5.Â Performance notes
+
+| Concern | Suggested fix |
+|---------|---------------|
+| **Full table scans** (finding stories with intersecting criteria) | Create an indexed column on `ContentSearch.criteriaIds` or store a *tag* table: `(storyId, criterionId)` â then you can join on `criterionId IN (â¦)`. |
+| **Large history tables** | Aggregate directly in the database: `SELECT moderatorId, COUNT(*) FROM moderator_history WHERE storyId IN (â¦) GROUP BY moderatorId`. LoopBack can pass these conditions or you can use raw SQL for this chunk. |
+| **Multiple roundâtrips** | Load moderators with eager content search (`{ include: ['contentSearch'] }`) to avoid N+1. |
+| **Cache reuse** | Store the `searchTermGetMatchesWithTargetsAndCountsAndCriteria` results in an inâmemory LRU cache keyed on the set of criteria (hash). |
+
+---
+
+## 6.Â Usage example
+
+```ts
+// from a controller that receives a publish request
+const modService = ctx.get('moderationService');
+const topMods = await modService.pickModerators(requestedStoryId, 3);
+await storyRepo.updateById(requestedStoryId, {moderatorIds: topMods.map(m => m.moderatorId)});
+```
+
+The story record now contains the IDs of the selected moderators (or you could write them to a join table).  
+If you need to assign *multiple* moderators, just widen the `topN` parameter.
+
+---
+
+## 7.Â Variations & extensions
+
+| Idea | How to adapt the algorithm |
+|------|----------------------------|
+| **Weight criteria** | Multiply each matched criterion by a weight (`topicWeight`, `personWeight`, â¦) before sorting. |
+| **Fairness constraint** | Keep a running queue of recentlyâassigned moderators and give them a âpenaltyâ if they appear in the top 5. |
+| **Dynamic topâN** | Return all moderators with a nonâzero matchCount; the UI can let the editor pick one. |
+| **Batch moderation** | Use the same routine for nightly batch jobs â just set `topN` to the number of moderators you want to split the load across. |
+
+--- 
+
+### TL;DR
+
+1. **Pull storyâs criteria**.  
+2. **Pull all moderator profiles** and compute how many of those criteria each moderator carries (`searchTermGetMatchesWithTargetsAndCountsAndCriteria`).  
+3. **Count how many times each moderator has already handled stories that share any of those criteria** (`ModeratorHistory` + `Story` join).  
+4. **Sort** by *match count* (descending) then by *history count* (ascending).  
+5. **Return the top *N* moderators.**
+
+With this skeleton you have a clean, testable service that can be expanded, cached, or backed by more sophisticated ranking (e.g., Bayesian, machineâlearning based). Happy moderating!

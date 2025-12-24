@@ -1,0 +1,10 @@
+﻿Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒÄ» Using provider: spark1gemma34b (gemma3:4b)
+Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒöº Router config:
+   ANTHROPIC_BASE_URL: http://127.0.0.1:3456
+   ANTHROPIC_API_KEY: test...
+   primaryProvider: api-key
+   MCP config: C:\Users\execu\AppData\Roaming\Claude\claude_desktop_config.json
+API Error: 400 {"error":{"message":"Error from provider(spark1gemma34b,gemma3:4b: 400): {\"error\":{\"message\":\"registry.ollama.ai/library/gemma3:4b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\nError: Error from provider(spark1gemma34b,gemma3:4b: 400): {\"error\":{\"message\":\"registry.ollama.ai/library/gemma3:4b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n\n    at nt (D:\\syncfolder\\projects\\claude\\claude-code-router\\dist\\cli.js:79722:11)\n    at p0 (D:\\syncfolder\\projects\\claude\\claude-code-router\\dist\\cli.js:79782:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async f0 (D:\\syncfolder\\projects\\claude\\claude-code-router\\dist\\cli.js:79747:96)","type":"api_error","code":"provider_response_error"}}
+

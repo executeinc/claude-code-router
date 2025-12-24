@@ -1,0 +1,82 @@
+﻿ Here's a high-level design of the moderation selection algorithm using LoopBack 4 for backend API's and pseudocode:
+
+1. First, define the necessary Moderator and ContentSearch Repositories to interact with database operations.
+
+```typescript
+import {Repository} from "@loopback/repository";
+
+interface ContentCriteria {
+  topicId?: number;
+  personSubjectId?: number;
+  thingId?: number;
+}
+
+export class ModeratorRepository extends Repository {
+  //...
+}
+
+export class ContentSearchRepository extends Repository {
+  //...
+}
+```
+
+2. Implement a function that filters available moderators based on the Story's search criteria and counts the number of applicable matches for each moderator:
+
+```typescript
+import {DataSource} from "@loopback/repository";
+import {inject, service} from "@loopback/core";
+import {ModeratorRepository} from "./repositories/moderator.repository";
+import {ContentSearchRepository} from "./repositories/content-search.repository";
+import {StorySubmission} from "../models";
+import {ContentCriteria} from "./types";
+
+export async function findApplicableModerators(
+  dataSource: DataSource,
+  storySubmission: StorySubmission,
+  userProfileId: number
+): Promise<Array<{ moderateeModeratorId: number; criteriaMatchCounts: ContentCriteria }>> {
+  const moderatorRepository = dataSource.getRepository(ModeratorRepository);
+  const contentSearchRepository = dataSource.getRepository(ContentSearchRepository);
+
+  // Fetch user's personal ContentSearch records
+  const userProfileContentSearches: Array<ContentCriteria> = await contentSearchRepository.searchTermGetMatchesWithTargetsAndCountsAndCriteria(storySubmission.contentSearch, userProfileId);
+
+  const applicableModeratorsPromises = storySubmission.contentSearch.map((criteriaKey: string) => {
+    return moderatorRepository.find({
+      where: {userId: userProfileId},
+      include: {relation: "moderatorHistorys", where: {"story.contentSearch.${criteriaKey}": criteriaKey}}, // dynamic criteria key
+    }).then((moderators) => ({
+      moderateeModeratorId: moderators[0].id, // assume userId matches moderatorId in Moderator entity
+      criteriaMatchCounts: moderators
+        .reduce(
+          (acc, moderator) => {
+            moderator.moderatorHistorys.forEach((moderatorHistory) => {
+              acc.topicId = (acc.topicId || 0) + (moderatorHistory.story?.contentSearch?.topicId || 0);
+              acc.personSubjectId = (acc.personSubjectId || 0) + (moderatorHistory.story?.contentSearch?.personSubjectId || 0);
+              acc.thingId = (acc.thingId || 0) + (moderatorHistory.story?.contentSearch?.thingId || 0);
+            });
+            return acc;
+          },
+          userProfileContentSearches
+        )
+    }));
+  });
+
+  const applicableModerators = await Promise.all(applicableModeratorsPromises);
+
+  // Sort applicableModerators by criteriaMatchCounts (priority to moderators who have more matches with Story's search criteria)
+  applicableModerators.sort((first, second) => {
+    return Object.keys(first.criteriaMatchCounts).reduce(
+      (sumFirst, key) => (sumFirst += first.criteriaMatchCounts[key]!),
+      0
+    ) - Object.keys(second.criteriaMatchCounts).reduce(
+      (sumSecond, key) => (sumSecond += second.criteriaMatchCounts[key]!),
+      0
+    );
+  });
+
+  return applicableModerators;
+}
+```
+
+With this approach, the `findApplicableModerators` function will return a list of matching moderators sorted by the number of criteria they have applicable for the submitted story. The list can then be filtered further as needed (e.g., selecting only active moderators) and assigned to moderate the story submission.

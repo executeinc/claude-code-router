@@ -1,0 +1,10 @@
+﻿Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒÄ» Using provider: spark1gptoss20b (gpt-oss:20b)
+Loaded local config from: D:\syncfolder\projects\claude\claude-code-router\.claude-code-router\config.json
+≡ƒöº Router config:
+   ANTHROPIC_BASE_URL: http://127.0.0.1:3456
+   ANTHROPIC_API_KEY: test...
+   primaryProvider: api-key
+   MCP config: C:\Users\execu\AppData\Roaming\Claude\claude_desktop_config.json
+Before proceeding, would you like me to outline an implementation plan?
+

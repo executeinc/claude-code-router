@@ -1,0 +1,430 @@
+﻿## 1. Goal  
+
+When a **Story** is submitted for publishing we must:
+
+1. **Identify every moderator whose `ContentSearch` overlaps with the storyâs searchâcriteria**.  
+2. **Score each moderator** by  
+   * how many of the storyâs criteria they match (the higher â the better) **and**  
+   * how many times they have already moderated items that contain those same criteria (the lower â the better, to spread the workload).  
+3. **Return a sorted list** (or automatically assign the top *N* moderators) that can be persisted in `ModeratorHistory`.
+
+The following design works entirely within a LoopBackâ¯4 backâend â it leverages repositories, inclusion resolvers, and a small service that contains the âselection engineâ.
+
+---
+
+## 2. Dataâmodel recap (LoopBack 4 terminology)
+
+| Model | Primary key | Important relations / fields |
+|-------|-------------|------------------------------|
+| `UserProfile` | `userprofileId` | `hasOne` â `ContentSearch` (the moderatorâs interests) <br> `hasMany` â `ModeratorHistory` |
+| `Story` | `storyId` | `hasOne` â `ContentSearch` (the storyâs tags) |
+| `ContentSearch` | `contentSearchId` | Holds **many** `searchTermId`s (topic / person / thing â¦) via a join table `ContentSearchTerm` <br> *Never* stores the concrete IDs on the model itself â they live in the join table. |
+| `ModeratorHistory` | `moderatorHistoryId` | `moderatorId` (FK â `UserProfile`) <br> `storyId` (FK â `Story`) <br> `created` (datetime) |
+
+> **Note** â The businessâobject behavior you mentioned â `searchTermGetMatchesWithTargetsAndCountsAndCriteria` â is expressed as a repository method that, given a set of searchâterm IDs, returns every *target* (moderator) together with **(a)** the count of matching terms **and** **(b)** the list of those term IDs.
+
+---
+
+## 3. API surface
+
+```ts
+// POST /stories/:id/assign-moderators
+// Body: { "maxAssignments": 3, "fallbackStrategy": "random" }
+```
+
+The controller simply forwards the request to a **ModerationService** that returns an ordered array of moderator IDs (or throws if no moderator can be found).
+
+---
+
+## 4. Highâlevel algorithm (what we are trying to achieve)
+
+```
+1ï¸â£  Load the story and its ContentSearch â S = {searchTermIdâ,â¦,searchTermIdâ}
+2ï¸â£  For every moderator M retrieve:
+      â¢ the set of term IDs they are interested in â C(M)
+      â¢ intersection = | S â© C(M) |
+      â¢ the list of intersecting term IDs â I(M)
+3ï¸â£  For every moderator M compute a *load* value:
+      â¢ look into ModeratorHistory for M
+      â¢ count how many historic moderations involve any term from I(M)
+      â¢ optionally weight by recency (e.g. decay older entries)
+4ï¸â£  Score each moderator:  
+      score(M) = Î± * intersectionCount  â  Î² * historicCount   (Î±,Î² are tunable)
+5ï¸â£  Sort moderators by descending score (ties â random or roundârobin)
+6ï¸â£  Return the first N moderators (N = maxAssignments)
+7ï¸â£  Persist a ModeratorHistory row for each assignment (in a DB transaction)
+```
+
+The algorithm can be expressed as a **single service method** that internally uses a handful of repository queries â most of the heavy lifting (stepâ¯2) can be done by the reusable `searchTermGetMatchesWithTargetsAndCountsAndCriteria` behaviour.
+
+---
+
+## 5. LoopBackâ4 concrete pseudoâcode  
+
+Below is **TypeScriptâish** pseudoâcode that could be dropped into a LoopBackâ¯4 service.  
+Only the essential parts are shown; error handling, pagination, and logging are omitted for brevity.
+
+```ts
+// src/services/moderation.service.ts
+import {inject, BindingScope, injectable} from '@loopback/core';
+import {
+  StoryRepository,
+  UserProfileRepository,
+  ContentSearchRepository,
+  ModeratorHistoryRepository,
+} from '../repositories';
+import {Story, UserProfile, ContentSearch, ModeratorHistory} from '../models';
+import {repository} from '@loopback/repository';
+import {IsolationLevel, TransactionalRepositoryMixin} from '@loopback/repository';
+
+// ---------------------------------------------------------------------------
+// 1ï¸â£  Helper: load the storyâs searchâterm IDs
+// ---------------------------------------------------------------------------
+async function getStoryTermIds(storyId: string): Promise<string[]> {
+  const story = await this.storyRepo.findById(storyId, {
+    include: [{relation: 'contentSearch'}],
+  });
+  const cs = story.contentSearch as ContentSearch;
+  // assume a join table `ContentSearchTerm` with a repo method:
+  return this.contentSearchRepo.getTermIds(cs.id);
+}
+
+// ---------------------------------------------------------------------------
+// 2ï¸â£  Helper: run the âsearchTermGetMatchesâ¦â behaviour
+// ---------------------------------------------------------------------------
+/**
+ * Returns an array of
+ *   {moderatorId, matchCount, matchingTermIds[]}
+ *
+ * Internally it does:
+ *   SELECT moderatorId,
+ *          COUNT(*) AS matchCount,
+ *          ARRAY_AGG(termId) AS matchingTermIds
+ *   FROM ModeratorContentSearchTerm
+ *   WHERE termId IN (<storyTermIds>)
+ *   GROUP BY moderatorId;
+ */
+async function getModeratorMatches(storyTermIds: string[]) {
+  // The repository contains a custom method built on a raw SQL query
+  return this.userProfileRepo.searchTermGetMatchesWithTargetsAndCountsAndCriteria(
+    storyTermIds,
+  );
+}
+
+// ---------------------------------------------------------------------------
+// 3ï¸â£  Helper: count historic moderations for a given moderator & term set
+// ---------------------------------------------------------------------------
+async function getHistoricCount(
+  moderatorId: string,
+  termIds: string[],
+): Promise<number> {
+  // Join ModeratorHistory â Story â ContentSearchTerm
+  // SELECT COUNT(*) FROM ModeratorHistory mh
+  //   JOIN Story s ON mh.storyId = s.id
+  //   JOIN ContentSearchTerm cst ON s.contentSearchId = cst.contentSearchId
+  //   WHERE mh.moderatorId = :moderatorId
+  //     AND cst.termId IN (<termIds>);
+  return this.moderatorHistoryRepo.countHistoryForTerms(moderatorId, termIds);
+}
+
+// ---------------------------------------------------------------------------
+// 4ï¸â£  Main public method
+// ---------------------------------------------------------------------------
+@injectable({scope: BindingScope.TRANSIENT})
+export class ModerationService {
+  constructor(
+    @repository(StoryRepository) private storyRepo: StoryRepository,
+    @repository(UserProfileRepository)
+    private userProfileRepo: UserProfileRepository,
+    @repository(ContentSearchRepository)
+    private contentSearchRepo: ContentSearchRepository,
+    @repository(ModeratorHistoryRepository)
+    private moderatorHistoryRepo: ModeratorHistoryRepository,
+  ) {}
+
+  /**
+   * Assign `maxAssignments` moderators to a story.
+   * Returns the ordered list of moderator IDs that were chosen.
+   */
+  async assignModerators(
+    storyId: string,
+    maxAssignments: number = 3,
+    alpha = 1, // weight for matching criteria
+    beta = 0.5, // weight for historic load
+  ): Promise<string[]> {
+    // ---- 1ï¸â£ Load story term IDs -------------------------------------------------
+    const storyTermIds = await getStoryTermIds.call(this, storyId);
+    if (storyTermIds.length === 0) {
+      throw new Error('Story has no search criteria â cannot assign moderators.');
+    }
+
+    // ---- 2ï¸â£ Get all potential moderators with match counts -----------------------
+    const rawMatches = await getModeratorMatches.call(this, storyTermIds);
+    // rawMatches: Array<{moderatorId:string, matchCount:number, matchingTermIds:string[]}>
+    if (rawMatches.length === 0) {
+      throw new Error('No moderators match any of the story criteria.');
+    }
+
+    // ---- 3ï¸â£ Enrich each moderator with historic count ----------------------------
+    const enriched = await Promise.all(
+      rawMatches.map(async m => {
+        const historicCount = await getHistoricCount.call(
+          this,
+          m.moderatorId,
+          m.matchingTermIds,
+        );
+        return {
+          moderatorId: m.moderatorId,
+          matchCount: m.matchCount,
+          historicCount,
+          matchingTermIds: m.matchingTermIds,
+        };
+      }),
+    );
+
+    // ---- 4ï¸â£ Score & sort --------------------------------------------------------
+    const scored = enriched.map(m => {
+      const score = alpha * m.matchCount - beta * m.historicCount;
+      return {...m, score};
+    });
+
+    scored.sort((a, b) => b.score - a.score || Math.random() - 0.5);
+
+    // ---- 5ï¸â£ Pick top N -----------------------------------------------------------
+    const chosen = scored.slice(0, maxAssignments);
+    const chosenIds = chosen.map(c => c.moderatorId);
+
+    // ---- 6ï¸â£ Persist assignments in a transaction ---------------------------------
+    // NOTE: The mixin `TransactionalRepositoryMixin` is assumed to be applied to
+    // ModeratorHistoryRepository so we can run a transaction.
+    await this.moderatorHistoryRepo.beginTransaction(
+      IsolationLevel.READ_COMMITTED,
+      async tx => {
+        for (const moderatorId of chosenIds) {
+          await this.moderatorHistoryRepo.create(
+            {
+              moderatorId,
+              storyId,
+              created: new Date(),
+            },
+            {transaction: tx},
+          );
+        }
+      },
+    );
+
+    // ---- 7ï¸â£ Return ---------------------------------------------------------------
+    return chosenIds;
+  }
+}
+```
+
+### What the custom repository methods look like  
+
+*All of these belong in the respective repositories and can be wired to raw SQL or a queryâbuilder (Knex, TypeORM, etc.).*
+
+```ts
+// src/repositories/user-profile.repository.ts
+import {DefaultCrudRepository, repository} from '@loopback/repository';
+import {UserProfile, UserProfileRelations} from '../models';
+import {DbDataSource} from '../datasources';
+import {inject} from '@loopback/core';
+
+export class UserProfileRepository extends DefaultCrudRepository<
+  UserProfile,
+  typeof UserProfile.prototype.id,
+  UserProfileRelations
+> {
+  // -------------------------------------------------------------------------
+  // Behaviour #1 â âsearchTermGetMatchesWithTargetsAndCountsAndCriteriaâ
+  // -------------------------------------------------------------------------
+  async searchTermGetMatchesWithTargetsAndCountsAndCriteria(
+    termIds: string[],
+  ): Promise<
+    Array<{
+      moderatorId: string;
+      matchCount: number;
+      matchingTermIds: string[];
+    }>
+  > {
+    // Example raw query (PostgreSQL syntax)
+    const sql = `
+      SELECT u.id AS "moderatorId",
+             COUNT(*) AS "matchCount",
+             ARRAY_AGG(ct.termId) AS "matchingTermIds"
+      FROM UserProfile u
+      JOIN ContentSearch cs ON cs.id = u.contentSearchId
+      JOIN ContentSearchTerm ct ON ct.contentSearchId = cs.id
+      WHERE ct.termId = ANY($1)
+      GROUP BY u.id
+    `;
+    const rows = await this.dataSource.execute(sql, [termIds]);
+    // rows is an array of objects matching the interface above
+    return rows;
+  }
+
+  // -------------------------------------------------------------------------
+  // Helper â retrieve the list of termIds for a concrete ContentSearch
+  // -------------------------------------------------------------------------
+  async getTermIds(contentSearchId: string): Promise<string[]> {
+    const rows = await this.dataSource.execute(
+      `SELECT termId FROM ContentSearchTerm WHERE contentSearchId = $1`,
+      [contentSearchId],
+    );
+    return rows.map((r: any) => r.termId);
+  }
+}
+```
+
+```ts
+// src/repositories/moderator-history.repository.ts
+import {
+  DefaultCrudRepository,
+  repository,
+  IsolationLevel,
+} from '@loopback/repository';
+import {ModeratorHistory, ModeratorHistoryRelations} from '../models';
+import {DbDataSource} from '../datasources';
+import {inject} from '@loopback/core';
+
+export class ModeratorHistoryRepository extends DefaultCrudRepository<
+  ModeratorHistory,
+  typeof ModeratorHistory.prototype.id,
+  ModeratorHistoryRelations
+> {
+  // -------------------------------------------------------------------------
+  // Count historic moderations for a moderator that involve any termId in `termIds`
+  // -------------------------------------------------------------------------
+  async countHistoryForTerms(
+    moderatorId: string,
+    termIds: string[],
+  ): Promise<number> {
+    const sql = `
+      SELECT COUNT(*) AS cnt
+      FROM ModeratorHistory mh
+      JOIN Story s ON s.id = mh.storyId
+      JOIN ContentSearch cs ON cs.id = s.contentSearchId
+      JOIN ContentSearchTerm cst ON cst.contentSearchId = cs.id
+      WHERE mh.moderatorId = $1
+        AND cst.termId = ANY($2)
+    `;
+    const rows = await this.dataSource.execute(sql, [moderatorId, termIds]);
+    return Number(rows[0].cnt);
+  }
+
+  // -------------------------------------------------------------------------
+  // Transaction helper (optional wrapper)
+  // -------------------------------------------------------------------------
+  async beginTransaction<T>(
+    isolation: IsolationLevel,
+    fn: (tx: any) => Promise<T>,
+  ): Promise<T> {
+    const trx = await this.dataSource.beginTransaction(isolation);
+    try {
+      const result = await fn(trx);
+      await trx.commit();
+      return result;
+    } catch (err) {
+      await trx.rollback();
+      throw err;
+    }
+  }
+}
+```
+
+---
+
+## 6. Controller wiring (thin)
+
+```ts
+// src/controllers/story.controller.ts
+import {
+  post,
+  requestBody,
+  param,
+  HttpErrors,
+} from '@loopback/rest';
+import {ModerationService} from '../services';
+import {inject} from '@loopback/core';
+
+export class StoryController {
+  constructor(
+    @inject('services.ModerationService')
+    private moderationService: ModerationService,
+  ) {}
+
+  @post('/stories/{id}/assign-moderators')
+  async assign(
+    @param.path.string('id') storyId: string,
+    @requestBody({
+      description: 'How many moderators we want to assign',
+      required: false,
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: {
+              maxAssignments: {type: 'number', default: 3},
+            },
+          },
+        },
+      },
+    })
+    body: {maxAssignments?: number},
+  ) {
+    try {
+      const moderators = await this.moderationService.assignModerators(
+        storyId,
+        body.maxAssignments ?? 3,
+      );
+      return {storyId, assignedModerators: moderators};
+    } catch (err) {
+      throw new HttpErrors.InternalServerError(err.message);
+    }
+  }
+}
+```
+
+---
+
+## 7. Edgeâcase handling & extensions  
+
+| Situation | How to address |
+|-----------|----------------|
+| **No moderator matches any term** | Fallback to a *generic pool* (all moderators) sorted only by historic load. |
+| **Tie in score** | Shuffle the tieâgroup (`Math.random()`) or use a roundârobin counter stored on `UserProfile`. |
+| **Moderator should not review the same story twice** | Before persisting, check that a `ModeratorHistory` row for (`moderatorId`, `storyId`) does **not** already exist. |
+| **Weighting recent load more than old load** | Instead of a plain count, compute a decayed sum: <br>`load = Î£ (1 / daysSince(entry.created + 1))`. |
+| **Very large taxonomy (10k+ termIds)** | Use a materialised *inverted index* table (`TermModeratorMap`) that preâaggregates `termId â moderatorId` for O(1) lookup. |
+| **Bulk assignment (many stories at once)** | Run the algorithm in a background queue, write batches of `ModeratorHistory` rows in a single transaction. |
+| **Auditing** | Keep the `created` timestamp + the *matched term list* (as JSON) in `ModeratorHistory` for later analysis. |
+
+---
+
+## 8. Complexity analysis  
+
+* Let **k** = number of term IDs in the incoming story.  
+* Let **M** = number of moderators in the system.  
+
+1. **Matchâlookup (stepâ¯2)** â Executed as a single `WHERE termId = ANY(k)` query â **O(kâ¯Â·â¯avgModeratorsPerTerm)** (usually far smaller than **M** because each term touches only a subset).  
+2. **Historic count per moderator** â One query per moderator (`O(N)` where *N* = number of candidates after stepâ¯2). In practice you can batch this into a single query that returns rows `(moderatorId, historicCount)` using a `GROUP BY` over the same join in stepâ¯3, making it **O(N)** without extra roundâtrips.  
+3. **Sorting** â `O(N log N)`.  
+
+Thus the whole pipeline is **linear to the number of *candidate* moderators**, not to the total moderator population.
+
+---
+
+## 9. Summary  
+
+* **Stepâbyâstep**:  
+  1. Pull the storyâs searchâterm IDs.  
+  2. Use the reusable behaviour `searchTermGetMatchesWithTargetsAndCountsAndCriteria` to obtain every moderator that shares any term and how many they share.  
+  3. For each moderator compute a historicâload value by counting previous moderations that involved the same overlapping terms.  
+  4. Combine the two numbers into a single score (higher overlap, lower historic load).  
+  5. Sort, pick the top N, persist a `ModeratorHistory` row for each, all inside a transaction.
+
+* **LoopBack 4 implementation** â a **ModerationService** that orchestrates three repository calls (`StoryRepo`, `UserProfileRepo`, `ModeratorHistoryRepo`) and a custom SQLâbased repository method for fast termâmatching.
+
+* **Extensibility** â weights (`Î±`, `Î²`), decay functions, fallback pools, and bulkâassignment are easy to plug in without changing the core algorithm.
+
+The pseudoâcode above can be copied verbatim into a LoopBackâ¯4 project (with minor typeâadjustments) and will give you a clean, testable, and performant moderationâselection pipeline.

@@ -1,0 +1,73 @@
+﻿**Moderation Selection Algorithm**
+
+Given a `Story` with associated `ContentSearch` criteria, we need to assign moderators based on their matching criteria and moderation history.
+
+### Step 1: Find Matching Moderators
+
+Create a method that takes the `Story` object as input and returns a list of `UserProfile` objects that match the content search criteria. This can be achieved using the `searchTermGetMatchesWithTargetsAndCountsAndCriteria` behavior.
+```typescript
+import { UserProfile, ContentSearch } from './business-objects';
+
+interface SearchResult {
+  moderator: UserProfile;
+  matches: number; // number of matching criteria
+  moderationHistory: number; // number of moderations for associated criteria
+}
+
+async function findMatchingModerators(story: Story): Promise<UserProfile[]> {
+  const contentSearch = story.contentSearch;
+  const searchResults: SearchResult[] = await ContentSearch.searchTermGetMatchesWithTargetsAndCountsAndCriteria(contentSearch);
+
+  const matchedProfiles = searchResults.map((searchResult) => ({
+    userProfile: searchResult.moderator,
+    matches: searchResult.matches,
+    moderationHistory: searchResult.moderationHistory,
+  }));
+
+  // Sort results by number of matches and then by moderation history
+  matchedProfiles.sort((a, b) => {
+    if (a.matches === b.matches) {
+      return b.moderationHistory - a.moderationHistory;
+    }
+    return b.matches - a.matches;
+  });
+
+  return matchedProfiles.map((searchResult) => searchResult.userProfile);
+}
+```
+### Step 2: Filter and Rank Moderators
+
+Create a second method that filters the list of moderators by their moderation history for each criterion in the `Story`'s content search. The rank can be based on the number of matching criteria, moderation history, or a custom algorithm.
+
+For example:
+```typescript
+async function filterAndRankModerators(matchedProfiles: UserProfile[]): Promise<UserProfile[]> {
+  const storyCriteria = matchedProfiles[0].searchCriteria;
+  const filteredProfiles = matchedProfiles.filter((profile) => isMasteryOverStoryCriteria(profile.searchCriteria, storyCriteria));
+  
+  // Rank profiles based on moderation history and matching criteria
+  return filteredProfiles.sort((a, b) => {
+    if (a.moderationHistory === b.moderationHistory) {
+      return b.matches - a.matches;
+    }
+    return b.moderationHistory - a.moderationHistory;
+  });
+}
+```
+### Step 3: Assign Moderators
+
+Assign the top-ranked moderators to the `Story` based on their moderation history, matching criteria, and expertise.
+
+Use an algorithm like Top-Ranked, Random Selection (from pre-approved list), or Least Busy Algorithm. You can modify this function to adapt any ranking rules you need.
+```typescript
+async function assignModerators(story: Story): Promise<UserProfile[]> {
+  const matchedProfiles = await findMatchingModerators(story);
+  const rankedProfiles = await filterAndRankModerators(matchedProfiles);
+
+  // Assign top-ranked moderators (logic based on `story` property and moderation ranking)
+  return rankedProfiles.slice(0, story.moderationLimit).map((profile) => profile.userProfileId);
+}
+```
+This example provides a basic structure for implementing a moderation selection algorithm. You can tailor it to fit your needs, adding factors like user availability, workload balance or adjust the sorting logic as needed.
+
+Make sure to update your endpoint handling and API design according to these changes, e.g., adapting `assignModerators` output in service implementation, adjusting business process logic according to `Story` property values. Adjust and expand upon this answer based on specific requirements for you backend integration, data flows and application.

@@ -200,36 +200,13 @@ async function run(options: RunOptions = {}) {
         req.agents = useAgents;
       }
 
-      // Strip system context if provider has stripSystemContext: true (unless --no-strip-system flag is set)
-      if (req.body?.model && config.Providers) {
-        // Check if no-strip-system flag file exists
-        const noStripFlagFile = join(homedir(), ".claude-code-router", ".no-strip-system.json");
-        const noStripSystemEnabled = await new Promise(resolve => {
-          existsSync(noStripFlagFile) ? resolve(true) : resolve(false);
-        });
+      // Strip system context if --strip-system CLI flag is set
+      const stripFlagFile = join(homedir(), ".claude-code-router", ".strip-system.json");
+      const stripSystemEnabled = existsSync(stripFlagFile);
 
-        if (!noStripSystemEnabled) {
-          const modelStr = req.body.model;
-          let providerName = modelStr;
-
-          // Extract provider name from "provider,model" format or model override
-          if (modelStr.includes(",")) {
-            providerName = modelStr.split(",")[0];
-          }
-
-          // Find provider in config
-          const provider = config.Providers.find((p: any) =>
-            p.name.toLowerCase() === providerName.toLowerCase()
-          );
-
-          // If provider has stripSystemContext enabled, clear system field
-          if (provider?.stripSystemContext && req.body?.system) {
-            req.log.info(`Stripping system context for provider: ${provider.name}`);
-            delete req.body.system;
-          }
-        } else {
-          req.log.info("System context stripping disabled by --no-strip-system flag");
-        }
+      if (stripSystemEnabled && req.body?.system) {
+        req.log.info("Stripping system context (--strip-system flag enabled)");
+        delete req.body.system;
       }
 
       await router(req, reply, {

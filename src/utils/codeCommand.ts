@@ -10,7 +10,7 @@ import {
 } from "./processCheck";
 import { createEnvVariables } from "./createEnvVariables";
 
-export async function executeCodeCommand(args: string[] = [], providerOverride?: string, noStripSystem?: boolean) {
+export async function executeCodeCommand(args: string[] = [], providerOverride?: string, stripSystem?: boolean) {
   // Set environment variables using shared function
   const config = await readConfigFile();
 
@@ -45,18 +45,18 @@ export async function executeCodeCommand(args: string[] = [], providerOverride?:
 
   const env = await createEnvVariables();
 
-  // Write no-strip-system flag to file for router to read
-  if (noStripSystem) {
-    const flagFile = path.join(os.homedir(), ".claude-code-router", ".no-strip-system.json");
+  // Write strip-system flag to file for router to read
+  if (stripSystem) {
+    const flagFile = path.join(os.homedir(), ".claude-code-router", ".strip-system.json");
     const flagData = {
       enabled: true,
       timestamp: Date.now()
     };
     try {
       await require("fs/promises").writeFile(flagFile, JSON.stringify(flagData));
-      console.log(`🔓 System context stripping disabled for this session`);
+      console.log(`🔓 System context will be stripped for this session`);
     } catch (err) {
-      console.error(`Warning: Could not write no-strip-system flag: ${err}`);
+      console.error(`Warning: Could not write strip-system flag: ${err}`);
     }
   }
 
@@ -176,9 +176,9 @@ export async function executeCodeCommand(args: string[] = [], providerOverride?:
         // Ignore cleanup errors
       }
     }
-    // Clean up no-strip-system flag if it exists
-    if (noStripSystem) {
-      const flagFile = path.join(os.homedir(), ".claude-code-router", ".no-strip-system.json");
+    // Clean up strip-system flag if it exists
+    if (stripSystem) {
+      const flagFile = path.join(os.homedir(), ".claude-code-router", ".strip-system.json");
       try {
         await require("fs/promises").unlink(flagFile);
       } catch (err) {

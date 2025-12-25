@@ -124,16 +124,16 @@ async function main() {
       await activateCommand();
       break;
     case "code":
-      // Parse --model/-m flag and --no-strip-system flag
+      // Parse --model/-m flag and --strip-system flag
       let providerOverride: string | undefined;
-      let noStripSystem = false;
+      let stripSystem = false;
       const filteredArgs: string[] = [];
       for (let i = 3; i < process.argv.length; i++) {
         if (process.argv[i] === "-m" || process.argv[i] === "--model") {
           providerOverride = process.argv[i + 1];
           i++; // Skip next arg (the provider name)
-        } else if (process.argv[i] === "--no-strip-system") {
-          noStripSystem = true;
+        } else if (process.argv[i] === "--strip-system") {
+          stripSystem = true;
         } else {
           filteredArgs.push(process.argv[i]);
         }
@@ -155,7 +155,7 @@ async function main() {
         startProcess.unref();
 
         if (await waitForService()) {
-          executeCodeCommand(filteredArgs, providerOverride, noStripSystem);
+          executeCodeCommand(filteredArgs, providerOverride, stripSystem);
         } else {
           console.error(
             "Service startup timeout, please manually run `ccr start` to start the service"
@@ -163,7 +163,7 @@ async function main() {
           process.exit(1);
         }
       } else {
-        executeCodeCommand(filteredArgs, providerOverride, noStripSystem);
+        executeCodeCommand(filteredArgs, providerOverride, stripSystem);
       }
       break;
     case "ui":

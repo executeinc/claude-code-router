@@ -69,13 +69,10 @@ const confirm = async (query: string): Promise<boolean> => {
 
 export const readConfigFile = async () => {
   const configPath = getConfigFilePath();
-  const isLocalConfig = configPath !== CONFIG_FILE;
 
   try {
     const config = await fs.readFile(configPath, "utf-8");
-    if (isLocalConfig) {
-      console.log(`Loaded local config from: ${configPath}`);
-    }
+    console.log(`Loading config from: ${configPath}`);
     try {
       // Try to parse with JSON5 first (which also supports standard JSON)
       const parsedConfig = JSON5.parse(config);

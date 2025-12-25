@@ -1,5 +1,60 @@
 # Claude Code Router - Quick Reference
 
+## Remote/SSH Setup (Headless)
+
+When running on a remote server via SSH, additional configuration is required:
+
+### Requirements
+- **Node.js 20+** (Node 18 has `File is not defined` error with undici)
+- **nvm** recommended for managing Node versions
+
+### Setup Steps
+
+1. **Install nvm and Node 22:**
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.nvm/nvm.sh
+nvm install 22
+nvm alias default 22
+```
+
+2. **Add nvm to .profile** (for non-interactive shells):
+```bash
+# Add BEFORE the .bashrc source line in ~/.profile:
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+
+3. **Create config file** (searched in order):
+   - `./config.json` (current directory)
+   - `./.claude-code-router/config.json` (subdirectory)
+   - `~/.claude-code-router/config.json` (global fallback)
+
+```json
+{
+  "CLAUDE_PATH": "/home/YOUR_USER/.nvm/versions/node/v22.21.1/bin/claude",
+  "NON_INTERACTIVE_MODE": true,
+  "PORT": 3456,
+  "Providers": [...],
+  "Router": {...}
+}
+```
+
+4. **Install Claude Code globally:**
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### Verify Setup
+```bash
+bash -l -c "node --version"  # Should show v22.x
+bash -l -c "which claude"     # Should show nvm path
+ccr status                    # Should show service running
+ccr code "test prompt"        # Should work
+```
+
+---
+
 ## Test Results
 
 | Endpoint | Backend | Simple Requests | Claude Code |

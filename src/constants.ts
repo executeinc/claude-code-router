@@ -8,11 +8,19 @@ export const HOME_DIR = path.join(os.homedir(), ".claude-code-router");
 export const LOCAL_CONFIG_DIR = ".claude-code-router";
 
 // Get config file path - checks local first, then global
+// Search order: ./config.json -> ./.claude-code-router/config.json -> ~/.claude-code-router/config.json
 export const getConfigFilePath = (): string => {
+  // 1. Check current directory for config.json
+  const cwdConfig = path.join(process.cwd(), "config.json");
+  if (existsSync(cwdConfig)) {
+    return cwdConfig;
+  }
+  // 2. Check .claude-code-router subdirectory in current directory
   const localConfigPath = path.join(process.cwd(), LOCAL_CONFIG_DIR, "config.json");
   if (existsSync(localConfigPath)) {
     return localConfigPath;
   }
+  // 3. Global fallback
   return path.join(HOME_DIR, "config.json");
 };
 

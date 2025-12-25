@@ -69,7 +69,7 @@ ccr code "test prompt"        # Should work
 
 ## Using CCR Code Sessions
 
-### Use `-m` Flag to Select Provider ⭐ (NEW)
+### Use `-m` Flag to Select Provider
 ```bash
 ccr code -m zurgs7 "your prompt"
 ccr code -m spark1-traefik "your prompt"
@@ -81,6 +81,18 @@ ccr code --model zurgs7-traefik "your prompt"
 - `zurgs7` - Direct to zurgs7:8000
 - `spark1-traefik` - Via load balancer (spark)
 - `zurgs7-traefik` - Via load balancer (zurgs7)
+
+### Use `--strip-system` Flag to Remove System Context
+When using local LLMs that don't need or can't handle the full Claude Code system prompt:
+```bash
+ccr code --strip-system "your prompt"
+ccr code --strip-system -m spark1llama3.18b "your prompt"
+```
+
+**What it does:**
+- Removes the Claude Code system context from requests
+- Useful for local models with smaller context windows
+- Reduces token usage when system instructions aren't needed
 
 ### Change Default (Permanent)
 Edit `.claude-code-router/config.json`:

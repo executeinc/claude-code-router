@@ -34,9 +34,15 @@ Commands:
   -v, version   Show version information
   -h, help      Show help information
 
+Code Options:
+  -m, --model <provider>   Use specific provider for this session
+  --strip-system           Strip Claude Code system context
+
 Example:
   ccr start
   ccr code "Write a Hello World"
+  ccr code -m spark1llama3.18b "Hello"
+  ccr code --strip-system "Hello"
   ccr model
   eval "$(ccr activate)"  # Set environment variables globally
   ccr ui

@@ -2,8 +2,9 @@ import path from "node:path";
 import os from "node:os";
 import { existsSync } from "node:fs";
 
-// All paths are relative to current working directory
-export const HOME_DIR = process.cwd();
+// All paths are relative to current working directory (evaluated at call time)
+export const getHomeDir = () => process.cwd();
+export const HOME_DIR = process.cwd(); // For backwards compatibility
 
 // Get config file path - looks for config.json in current directory
 export const getConfigFilePath = (): string => {
@@ -11,10 +12,13 @@ export const getConfigFilePath = (): string => {
 };
 
 // Config file in current directory
+export const getConfigFile = () => path.join(process.cwd(), "config.json");
 export const CONFIG_FILE = path.join(process.cwd(), "config.json");
 
+export const getPluginsDir = () => path.join(process.cwd(), "plugins");
 export const PLUGINS_DIR = path.join(process.cwd(), "plugins");
 
+export const getPidFile = () => path.join(process.cwd(), '.ccr.pid');
 export const PID_FILE = path.join(process.cwd(), '.ccr.pid');
 
 export const REFERENCE_COUNT_FILE = path.join(os.tmpdir(), "claude-code-reference-count.txt");

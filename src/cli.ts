@@ -12,7 +12,7 @@ import { runModelSelector } from "./utils/modelSelector"; // ADD THIS LINE
 import { activateCommand } from "./utils/activateCommand";
 import { version } from "../package.json";
 import { spawn, exec } from "child_process";
-import { PID_FILE, REFERENCE_COUNT_FILE } from "./constants";
+import { getPidFile, REFERENCE_COUNT_FILE } from "./constants";
 import fs, { existsSync, readFileSync } from "fs";
 import { join } from "path";
 
@@ -76,7 +76,7 @@ async function main() {
       break;
     case "stop":
       try {
-        const pid = parseInt(readFileSync(PID_FILE, "utf-8"));
+        const pid = parseInt(readFileSync(getPidFile(), "utf-8"));
         process.kill(pid);
         cleanupPidFile();
         if (existsSync(REFERENCE_COUNT_FILE)) {
@@ -298,7 +298,7 @@ async function main() {
     case "restart":
       // Stop the service if it's running
       try {
-        const pid = parseInt(readFileSync(PID_FILE, "utf-8"));
+        const pid = parseInt(readFileSync(getPidFile(), "utf-8"));
         process.kill(pid);
         cleanupPidFile();
         if (existsSync(REFERENCE_COUNT_FILE)) {

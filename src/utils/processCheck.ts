@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { PID_FILE, REFERENCE_COUNT_FILE } from '../constants';
+import { getPidFile, REFERENCE_COUNT_FILE } from '../constants';
 import { readConfigFile } from '.';
 import find from 'find-process';
 import { execSync } from 'child_process'; // 引入 execSync 来执行命令行
@@ -39,13 +39,14 @@ export function getReferenceCount(): number {
 }
 
 export function isServiceRunning(): boolean {
-    if (!existsSync(PID_FILE)) {
+    const pidFile = getPidFile();
+    if (!existsSync(pidFile)) {
         return false;
     }
 
     let pid: number;
     try {
-        const pidStr = readFileSync(PID_FILE, 'utf-8');
+        const pidStr = readFileSync(pidFile, 'utf-8');
         pid = parseInt(pidStr, 10);
         if (isNaN(pid)) {
             // PID 文件内容无效
@@ -92,14 +93,15 @@ export function isServiceRunning(): boolean {
 }
 
 export function savePid(pid: number) {
-    writeFileSync(PID_FILE, pid.toString());
+    writeFileSync(getPidFile(), pid.toString());
 }
 
 export function cleanupPidFile() {
-    if (existsSync(PID_FILE)) {
+    const pidFile = getPidFile();
+    if (existsSync(pidFile)) {
         try {
             const fs = require('fs');
-            fs.unlinkSync(PID_FILE);
+            fs.unlinkSync(pidFile);
         } catch (e) {
             // Ignore cleanup errors
         }
@@ -107,12 +109,13 @@ export function cleanupPidFile() {
 }
 
 export function getServicePid(): number | null {
-    if (!existsSync(PID_FILE)) {
+    const pidFile = getPidFile();
+    if (!existsSync(pidFile)) {
         return null;
     }
 
     try {
-        const pid = parseInt(readFileSync(PID_FILE, 'utf-8'));
+        const pid = parseInt(readFileSync(pidFile, 'utf-8'));
         return isNaN(pid) ? null : pid;
     } catch (e) {
         return null;
@@ -130,7 +133,7 @@ export async function getServiceInfo() {
         pid,
         port,
         endpoint: `http://127.0.0.1:${port}`,
-        pidFile: PID_FILE,
+        pidFile: getPidFile(),
         referenceCount: getReferenceCount()
     };
 }

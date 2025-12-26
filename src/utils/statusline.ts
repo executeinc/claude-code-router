@@ -486,7 +486,7 @@ export async function parseStatusLineData(input: StatusLineInput): Promise<strin
     if (!model) {
       try {
         // 获取项目配置文件路径
-        const projectConfigPath = path.join(workDir, ".claude-code-router", "config.json");
+        const projectConfigPath = path.join(workDir, "config.json");
         let configPath = projectConfigPath;
         
         // 检查项目配置文件是否存在，如果不存在则使用用户主目录的配置文件

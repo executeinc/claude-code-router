@@ -114,7 +114,7 @@ export const createServer = (config: any): Server => {
   // 获取日志文件列表端点
   server.app.get("/api/logs/files", async (req, reply) => {
     try {
-      const logDir = join(homedir(), ".claude-code-router", "logs");
+      const logDir = join(process.cwd(), "logs");
       const logFiles: Array<{ name: string; path: string; size: number; lastModified: string }> = [];
 
       if (existsSync(logDir)) {
@@ -156,7 +156,7 @@ export const createServer = (config: any): Server => {
         logFilePath = filePath;
       } else {
         // 如果没有指定文件路径，使用默认的日志文件路径
-        logFilePath = join(homedir(), ".claude-code-router", "logs", "app.log");
+        logFilePath = join(process.cwd(), "logs", "app.log");
       }
 
       if (!existsSync(logFilePath)) {
@@ -184,7 +184,7 @@ export const createServer = (config: any): Server => {
         logFilePath = filePath;
       } else {
         // 如果没有指定文件路径，使用默认的日志文件路径
-        logFilePath = join(homedir(), ".claude-code-router", "logs", "app.log");
+        logFilePath = join(process.cwd(), "logs", "app.log");
       }
 
       if (existsSync(logFilePath)) {

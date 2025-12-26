@@ -25,10 +25,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 ```
 
-3. **Create config file** (searched in order):
-   - `./config.json` (current directory)
-   - `./.claude-code-router/config.json` (subdirectory)
-   - `~/.claude-code-router/config.json` (global fallback)
+3. **Create config file** in the project directory:
 
 ```json
 {
@@ -95,7 +92,7 @@ ccr code --strip-system -m spark1llama3.18b "your prompt"
 - Reduces token usage when system instructions aren't needed
 
 ### Change Default (Permanent)
-Edit `.claude-code-router/config.json`:
+Edit `config.json`:
 ```json
 "Router": {
   "default": "zurgs7,Qwen/Qwen2.5-3B-Instruct"
@@ -131,7 +128,7 @@ Router listens on: `http://127.0.0.1:3456`
 - `spark1-traefik` → http://localLB.executeinc.com/vllm/v1/chat/completions
 - `zurgs7-traefik` → http://localLB.executeinc.com/vllm/v1/chat/completions
 
-**Router Configuration:** `.claude-code-router/config.json` (local project config)
+**Router Configuration:** `./config.json` (current directory)
 
 ## Common Commands
 

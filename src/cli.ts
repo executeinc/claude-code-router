@@ -219,7 +219,7 @@ async function main() {
               Router: {},
             });
             console.log(
-              "Created minimal default configuration file at ~/.claude-code-router/config.json"
+              "Created minimal default configuration file at ./config.json"
             );
             console.log(
               "Please edit this file with your actual configuration."

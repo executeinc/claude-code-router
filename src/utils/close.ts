@@ -1,10 +1,8 @@
 import { isServiceRunning, cleanupPidFile, getReferenceCount } from './processCheck';
 import { readFileSync } from 'fs';
-import { HOME_DIR } from '../constants';
-import { join } from 'path';
+import { PID_FILE } from '../constants';
 
 export async function closeService() {
-    const PID_FILE = join(HOME_DIR, '.claude-code-router.pid');
     const isRunning = await isServiceRunning()
 
     if (!isRunning) {

@@ -3,7 +3,8 @@
     "allow": [
       "mcp__ssh-mcp-stdio__list-servers",
       "mcp__ssh-mcp-stdio__secure-execute-command",
-      "mcp__ssh-mcp-stdio__execute-command"
+      "mcp__ssh-mcp-stdio__execute-command",
+      "mcp__ssh__execute-command"
     ],
     "deny": [],
     "ask": []

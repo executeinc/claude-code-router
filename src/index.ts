@@ -132,11 +132,7 @@ async function run(options: RunOptions = {}) {
       providers: config.Providers || config.providers,
       HOST: HOST,
       PORT: servicePort,
-      LOG_FILE: join(
-        homedir(),
-        ".claude-code-router",
-        "claude-code-router.log"
-      ),
+      LOG_FILE: join(process.cwd(), "logs", "claude-code-router.log"),
     },
     logger: loggerConfig,
   });
@@ -201,7 +197,7 @@ async function run(options: RunOptions = {}) {
       }
 
       // Strip system context if --strip-system CLI flag is set
-      const stripFlagFile = join(homedir(), ".claude-code-router", ".strip-system.json");
+      const stripFlagFile = join(process.cwd(), ".strip-system.json");
       const stripSystemEnabled = existsSync(stripFlagFile);
 
       if (stripSystemEnabled && req.body?.system) {

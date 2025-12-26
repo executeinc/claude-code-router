@@ -29,7 +29,7 @@ export async function executeCodeCommand(args: string[] = [], providerOverride?:
       process.exit(1);
     }
     // Write override to temp file for router to read
-    const overrideFile = path.join(os.homedir(), ".claude-code-router", ".model-override.json");
+    const overrideFile = path.join(process.cwd(), ".model-override.json");
     const overrideData = {
       provider: providerOverride,
       model: model,
@@ -47,7 +47,7 @@ export async function executeCodeCommand(args: string[] = [], providerOverride?:
 
   // Write strip-system flag to file for router to read
   if (stripSystem) {
-    const flagFile = path.join(os.homedir(), ".claude-code-router", ".strip-system.json");
+    const flagFile = path.join(process.cwd(), ".strip-system.json");
     const flagData = {
       enabled: true,
       timestamp: Date.now()
@@ -169,7 +169,7 @@ export async function executeCodeCommand(args: string[] = [], providerOverride?:
   claudeProcess.on("close", async (code) => {
     // Clean up override file if it exists
     if (providerOverride) {
-      const overrideFile = path.join(os.homedir(), ".claude-code-router", ".model-override.json");
+      const overrideFile = path.join(process.cwd(), ".model-override.json");
       try {
         await require("fs/promises").unlink(overrideFile);
       } catch (err) {
@@ -178,7 +178,7 @@ export async function executeCodeCommand(args: string[] = [], providerOverride?:
     }
     // Clean up strip-system flag if it exists
     if (stripSystem) {
-      const flagFile = path.join(os.homedir(), ".claude-code-router", ".strip-system.json");
+      const flagFile = path.join(process.cwd(), ".strip-system.json");
       try {
         await require("fs/promises").unlink(flagFile);
       } catch (err) {

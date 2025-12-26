@@ -68,8 +68,7 @@
       "name": "spark1llama3.18b",
       "api_base_url": "http://spark1:11434/v1/chat/completions",
       "api_key": "ollama",
-      "models": ["llama3.1:8b"],
-      "stripSystemContext": true
+      "models": ["llama3.1:8b"]
     },
 
     {

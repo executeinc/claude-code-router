@@ -1,36 +1,3 @@
-How It Works
-
-1.  When you use ccr code -m spark1llama3.18b "your prompt":
-
-    - The router intercepts the request
-    - Sees that spark1llama3.18b has stripSystemContext: true
-    - Deletes the 30K+ token Claude Code system context
-    - Forwards only your prompt to Ollama
-
-2.  The model receives a clean prompt without:
-
-        - Git status
-        - Working directory info
-        - Tool descriptions
-        - Environment variables
-        - Claude Code instructions
-
-    what
-    Usage
-
-# With system context stripped (clean prompt)
-
-ccr code -m spark1llama3.18b "Design a moderation algorithm"
-
-# Without stripping (full Claude context)
-
-ccr code -m spark1mistralLarge "Design a moderation algorithm"
-
-The feature is now active and testing. You can add "stripSystemContext": true to any provider in your config to enable this behavior!
-
-ccr code -m spark1mistralLarge "Write a Python function to reverse a string"
-this should talk to an ollama big model for code creation/debugging
-
 ![](blog/images/claude-code-router-img.png)
 
 [![](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87%E7%89%88-ff0000?style=flat)](README_zh.md)
@@ -277,25 +244,25 @@ ccr code -m spark1llama3.18b "your prompt"
 ccr code --model openrouter,anthropic/claude-3.5-sonnet "your prompt"
 ```
 
-**`--no-strip-system` - Preserve full system context**
+**`--strip-system` - Strip Claude Code system context**
 
-By default, the router strips the Claude Code system prompt for providers configured with `stripSystemContext: true`. Use this flag to preserve the full system context:
+Use this flag to remove the Claude Code system prompt from requests. This is useful for local LLMs with smaller context windows:
 
 ```shell
-ccr code --no-strip-system "your prompt"
+ccr code --strip-system "your prompt"
+ccr code --strip-system -m spark1llama3.18b "your prompt"
 ```
 
-This is useful for:
-- Debugging and understanding what Claude Code sends in its system prompt
-- Testing models with the full context
-- Inspecting the complete system prompt in logs
+This strips:
+- Claude Code instructions and guidelines
+- Tool descriptions
+- Git status and environment info
+- Working directory context
 
-When enabled, the system prompt will be logged to `~/.claude-code-router/logs/` with output like:
-```
-========== CLAUDE CODE SYSTEM PROMPT ==========
-[full system prompt JSON...]
-==============================================
-```
+Useful for:
+- Local models with limited context windows
+- Reducing token usage
+- Testing models without Claude Code context
 
 > **Note**: After modifying the configuration file, you need to restart the service for the changes to take effect:
 >

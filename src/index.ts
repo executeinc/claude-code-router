@@ -196,13 +196,19 @@ async function run(options: RunOptions = {}) {
         req.agents = useAgents;
       }
 
-      // Strip system context if --strip-system CLI flag is set
+      // Strip system context and tools if --strip-system CLI flag is set
       const stripFlagFile = join(process.cwd(), ".strip-system.json");
       const stripSystemEnabled = existsSync(stripFlagFile);
 
-      if (stripSystemEnabled && req.body?.system) {
-        req.log.info("Stripping system context (--strip-system flag enabled)");
-        delete req.body.system;
+      if (stripSystemEnabled) {
+        if (req.body?.system) {
+          req.log.info("Stripping system context (--strip-system flag enabled)");
+          delete req.body.system;
+        }
+        if (req.body?.tools) {
+          req.log.info("Stripping tools array (--strip-system flag enabled)");
+          delete req.body.tools;
+        }
       }
 
       await router(req, reply, {
